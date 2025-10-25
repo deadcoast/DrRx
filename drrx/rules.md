@@ -11,7 +11,7 @@ Rule format:
 
 Index
 - SP — Indentation & Alignment: [SP.01](#SP.01), [SP.02](#SP.02), [SP.03](#SP.03), [SP.04](#SP.04)
- - FW — Flow Markers: [FW.01](#FW.01), [FW.02](#FW.02), [FW.03](#FW.03), [FW.04](#FW.04), [FW.05](#FW.05), [FW.06](#FW.06), [FW.07](#FW.07), [FW.08](#FW.08), [FW.09](#FW.09), [FW.10](#FW.10), [FW.11](#FW.11)
+  - FW — Flow Markers: [FW.01](#FW.01), [FW.02](#FW.02), [FW.03](#FW.03), [FW.04](#FW.04), [FW.05](#FW.05), [FW.06](#FW.06), [FW.07](#FW.07), [FW.08](#FW.08), [FW.09](#FW.09), [FW.10](#FW.10), [FW.11](#FW.11)
 - RT/DR/FI — Core Operators: [RT.01](#RT.01), [DR.01](#DR.01), [FI.01](#FI.01)
 - NM/WN — Names & Windows: [NM.01](#NM.01), [NM.02](#NM.02), [NM.03](#NM.03), [NM.04](#NM.04), [WN.01](#WN.01)
 - CM — Comments: [CM.01](#CM.01), [CM.02](#CM.02)
@@ -19,7 +19,7 @@ Index
 - VL — Validation: [VL.01](#VL.01), [VL.02](#VL.02), [VL.03](#VL.03)
 - EX — Execution: [EX.01](#EX.01), [EX.02](#EX.02), [EX.03](#EX.03), [EX.04](#EX.04)
 - OR — Ordering & Grouping: [OR.01](#OR.01), [OR.02](#OR.02), [OR.03](#OR.03), [OR.04](#OR.04)
- - SF — Source File: [SF.01](#SF.01), [SF.02](#SF.02)
+  - SF — Source File: [SF.01](#SF.01), [SF.02](#SF.02)
 
 ---
 

@@ -1,0 +1,4 @@
+.                       # root
++-- src/                # directory before any root files (OR.01)
+| :== main.py
++== README.md           # root file appears after directory (also OR.04)

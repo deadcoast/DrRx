@@ -1,0 +1,1 @@
+	.                        # EXPECTED ERROR: SP.01 tabs disallowed; root also must be column 1 (SP.06)

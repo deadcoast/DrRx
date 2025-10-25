@@ -1,0 +1,66 @@
+{
+  "name": "drrx-vscode",
+  "displayName": "Dr.Rx Syntax",
+  "version": "0.0.1",
+  "publisher": "drrx",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:drrx",
+    "onCommand:drrx.lint"
+  ],
+  "main": "extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Dr.Rx",
+      "properties": {
+        "drrx.strict": {
+          "type": "string",
+          "enum": ["off", "warn", "error"],
+          "default": "error",
+          "description": "Diagnostics strictness: off (no diagnostics), warn (warnings only), error (errors as configured)."
+        },
+        "drrx.severityOverrides": {
+          "type": "object",
+          "description": "Per-rule severity overrides. Example: { \"SP.02\": \"error\", \"FW.08\": \"warn\", \"WN.02\": \"off\" }",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["off", "warn", "error"]
+          },
+          "default": {}
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "drrx",
+        "aliases": [
+          "DrRx",
+          "drrx"
+        ],
+        "extensions": [
+          ".drrx",
+          ".tree.drrx"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "drrx",
+        "scopeName": "source.drrx",
+        "path": "./syntaxes/drrx.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "vsce": "^2.15.0"
+  }
+}

@@ -1,0 +1,3 @@
+.                         # root
++== file.txt              # file node
+  +== illegal-child.txt   # EXPECTED ERROR: FW.10 files never have children

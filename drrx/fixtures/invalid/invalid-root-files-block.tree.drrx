@@ -1,0 +1,6 @@
+.                       # root
++== README.md
+|                       # spacer ends root file block
++-- src/
+| :== main.py
++== LATE.md             # file after spacer/dir at root (OR.04)

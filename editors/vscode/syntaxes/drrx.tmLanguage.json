@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Dr.Rx",
+  "scopeName": "source.drrx",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#spacer" },
+    { "include": "#flowline" }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.number-sign.drrx",
+      "match": "#.*$"
+    },
+    "spacer": {
+      "name": "meta.spacer.drrx",
+      "match": "^(?:  )*\\|\\s*(?=#|$)"
+    },
+    "flowline": {
+      "name": "meta.line.drrx",
+      "patterns": [
+        { "include": "#prefix" },
+        { "include": "#opline" }
+      ]
+    },
+    "prefix": {
+      "patterns": [
+        {
+          "name": "punctuation.flow.prefix.drrx",
+          "match": "^(?:  )*(?:[+:]\\s*)?(?:\\|\\s*)?"
+        }
+      ]
+    },
+    "opline": {
+      "patterns": [
+        { "name": "keyword.operator.dir.drrx", "match": "--" },
+        { "name": "keyword.operator.file.drrx", "match": "==" },
+        { "include": "#space-after-operator" },
+        { "include": "#name" },
+        { "include": "#annotations" }
+      ]
+    },
+    "space-after-operator": {
+      "name": "invalid.illegal.spacing.drrx",
+      "match": "(?<=(--|==))(?:\\s{2,}|\\t)"
+    },
+    "name": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.name.drrx",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [ { "name": "constant.character.escape.drrx", "match": "\\\\\"" } ]
+        },
+        { "name": "entity.name.unquoted.drrx", "match": "[A-Za-z0-9._-]+/?" }
+      ]
+    },
+    "annotations": {
+      "name": "meta.annotations.drrx",
+      "begin": "\\{",
+      "end": "\\}",
+      "patterns": [
+        { "name": "support.type.annotation.key.drrx", "match": "[A-Za-z0-9._-]+(?=\\s*:)" },
+        { "name": "punctuation.separator.key-value.drrx", "match": ":" },
+        { "name": "string.quoted.annotation.value.drrx", "begin": "\"", "end": "\"" },
+        { "name": "constant.other.annotation.value.drrx", "match": "[^;\"}]+" },
+        { "name": "punctuation.separator.annotation.drrx", "match": ";" }
+      ]
+    }
+  }
+}
+

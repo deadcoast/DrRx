@@ -1,0 +1,1 @@
+  .                       # EXPECTED ERROR: SP.06 root must start at column 1

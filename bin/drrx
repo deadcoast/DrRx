@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const { lintText } = require('../lib/drrx-lint');
+
+function usage() {
+  console.error('Usage: drrx <file1.drrx> [file2.drrx ...]');
+}
+function rulesLink(id) { return path.join('drrx', 'rules.md') + '#' + id; }
+
+function main(argv) {
+  const files = argv.slice(2);
+  if (!files.length) { usage(); process.exit(1); }
+  const out = [];
+  for (const f of files) {
+    let text;
+    try { text = fs.readFileSync(f, 'utf8'); }
+    catch (e) { console.error('Failed to read ' + f + ': ' + e.message); process.exitCode = 2; continue; }
+    const issues = lintText(text);
+    out.push({ file: f, diagnostics: issues.map(is => ({
+      rule: is.code, message: is.message, line: is.line + 1, column: is.start + 1, severity: is.severity, link: rulesLink(is.code)
+    }))});
+  }
+  console.log(JSON.stringify(out, null, 2));
+}
+main(process.argv);
+

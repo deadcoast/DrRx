@@ -1,0 +1,5 @@
+.                         # root
++== a.txt
+|                         # spacer (ok so far)
+|                         # EXPECTED WARNING: VL.07 excessive spacer (consecutive)
++== b.txt                 # EXPECTED ERROR: FW.06 spacer must precede a directory block, not a file

@@ -1,0 +1,5 @@
+.                         # root
++== README.md             # file block
++-- src/                  # EXPECTED ERROR: FW.06 missing spacer before directory
+| +== main.py
+| :-- pkg/

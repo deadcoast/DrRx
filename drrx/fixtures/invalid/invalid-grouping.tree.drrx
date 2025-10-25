@@ -1,0 +1,3 @@
+.                         # root
++-- app/                  # dir before files in block
+| +== later.txt           # EXPECTED ERROR: OR.02 group files first, then spacer, then dirs

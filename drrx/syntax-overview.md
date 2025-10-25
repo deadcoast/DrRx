@@ -197,7 +197,7 @@ Parsing heuristic (robust mode):
 - Unquoted names may include: letters, digits, `_`, `-`, `.`, and no spaces.
 - Quoted names `"..."` may include spaces and any character except `"` unless escaped as `\"`.
 - Prohibited names (Windows): `CON`, `PRN`, `AUX`, `NUL`, `COM1`..`COM9`, `LPT1`..`LPT9` (case-insensitive) and names ending with `.` or space.
- - Path length: support extended-length paths via `\\?\` internally; authors should avoid designs that exceed 260 characters unless the runtime enables long paths (see [WN.02](rules.md#WN.02)).
+  - Path length: support extended-length paths via `\\?\` internally; authors should avoid designs that exceed 260 characters unless the runtime enables long paths (see [WN.02](rules.md#WN.02)).
 - Case: Windows file system comparisons are case-insensitive by default; semantic matching should be case-insensitive unless configured otherwise.
 
 ### 5. Comments and Whitespace

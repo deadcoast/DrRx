@@ -1,0 +1,37 @@
+.                                         # root
++== "Read Me.txt"                        # quoted name with space
++== "note \"draft\".txt"               # quoted name with escaped quotes
++== "NUL.txt"                            # EXPECTED: WN.01 reserved name (warning/error by strictness)
+|                                         # spacer: next root item is a directory
++-- "Project Files"/                     # quoted directory name
+| +== "Spec.md"
+| :== "Plan.md"
+| |                                       # spacer before subdirectories
+| +-- assets/                             # correct grouping continues
+| | :== logo.png
+| |
+| :-- docs/                               # last sibling at this depth; children permitted
+|   +== intro.md
+|   :== api.md
+|
++-- edge-cases/                           # open branch for edge cases
+| +== file_a.txt
+| |                                       # EXPECTED WARNING: VL.05 orphan spacer (no following directory)
+| |                                       # EXPECTED WARNING: VL.07 excessive spacer (consecutive)
+| +-- dir_after_spacer/                   # this makes previous spacer valid; remove one spacer (formatter should fix)
+| |
+| :-- grouping-violations/                # start violations section (closed branch for siblings, children allowed)
+|   +-- subdir/                           # EXPECTED ERROR: OR.02 (directory before files in a block)
+|   +== later_file.txt                    # files must precede directories
+|   |                                     # EXPECTED ERROR: FW.06 (missing spacer before directory earlier)
+|   :== final_file.txt                    # still part of files group; expected to be moved above dir
+|
++-- flow-tests/                           # test missing/extra markers
+| +== alpha.txt
+| :-- beta/                               # last sibling at this depth; has children below
+|   +== child.txt
+|
+:-- trailing/                             # closed branch; no more root siblings after this subtree
+  +== ok.txt
+  |                                       # spacer before following directory
+  :-- end/

@@ -1,0 +1,15 @@
+{
+  "name": "drrx-repo",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "validate:ast": "npx ajv -s drrx/ast.schema.json -d drrx/examples/ast-example.json",
+    "validate:diff": "npx ajv -s drrx/list-diff.schema.json -r drrx/annotations.schema.json -d drrx/fixtures/conformance.list-diff.json",
+    "validate:all": "npm run validate:ast && npm run validate:diff",
+    "lint:drrx": "node bin/drrx",
+    "test": "node test/lint-fixtures.js"
+  },
+  "bin": {
+    "drrx": "bin/drrx"
+  }
+}

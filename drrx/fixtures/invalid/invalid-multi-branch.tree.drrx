@@ -1,0 +1,2 @@
+.                         # root
++:-- bad/                 # EXPECTED ERROR: FW.07 only one branch marker allowed ('+' or ':')

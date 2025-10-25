@@ -1,0 +1,3 @@
+.                         # root
++-- src/|
+| +== thing.py           # EXPECTED ERROR: FW.14 flow markers limited to prefix; '|' after name invalid
