@@ -1,0 +1,91 @@
+# DrRx Phase 1 - Core Concepts
+
+## Overview
+
+name: “directory remedy”, “DrRx”, and “drrx”.
+
+* Goal: Manage a real Windows directory from a single authoritative DrRx spec file written in a strict UDL (tree) syntax.
+* UDL core:
+
+  * Entities: `.` (root), `--` (directory op), `==` (file op).
+  * Flow: `+` opens a vein (new branch), `:` closes flow, `|` carries the vein vertically between parent/children.
+  * Layout rules: Double-space for hierarchical steps; when a vein is open (`+`), child alignment can use one space. New lines must align to the terminal character of the prior operator as shown in examples. Root files appear first; then directories; veins explicitly connect files/directories.
+* Authoring intent: Human-readable, strict, unambiguous tree that can be parsed to create/update the real filesystem exactly as declared.
+* CLI intent (`drrx` / `drrxm`): Treat the DrRx spec as the source of truth and provide commands to:
+
+  * inject (initialize/apply spec to target dir; supports `--file`, `--dir`, `--all`, `--force`, `--dry-run`)
+  * list / ls, restore, del/deldir/delall, adddir, addfile
+  * utilities: help (h), log (l), audit (a), clear (c), quicksave (qs)
+* Operating model: Deterministic reconciliation between the DrRx spec and the target directory, with dry-run and logging/auditing.
+
+## Core Components
+
+### UDL (Universal Directory Language) Core
+* Entities:
+  * `.` (root)
+  * `--` (directory operation)
+  * `==` (file operation)
+* Flow Control:
+  * `+` opens a vein (new branch)
+  * `:` closes flow
+  * `|` carries the vein vertically between parent/children
+
+### Layout Rules
+* Double-space for hierarchical steps
+* When a vein is open (`+`), child alignment can use one space
+* New lines must align to the terminal character of the prior operator
+* Root files appear first; then directories
+* Veins explicitly connect files/directories
+
+### Authoring Intent
+* Human-readable, strict, unambiguous tree
+* Can be parsed to create/update the real filesystem exactly as declared
+
+## CLI Intent ("drrx" / "drrxm")
+
+### Commands
+* inject: Initialize/apply spec to target dir
+  * Supports `--file`, `--dir`, `--all`, `--force`, `--dry-run`
+* list / ls: Display current state
+* restore: Restore from backup
+* del/deldir/delall: Delete operations
+* adddir: Add directory
+* addfile: Add file
+
+### Utilities
+* help (h): Show help
+* log (l): View logs
+* audit (a): Audit changes
+* clear (c): Clear logs
+* quicksave (qs): Create backup
+
+## Operating Model
+* Deterministic reconciliation between the DrRx spec and the target directory
+* Dry-run and logging/auditing capabilities
+* Source of truth approach with safety mechanisms
+
+* Name: "directory remedy", "DrRx", and "drrx"
+* Goal: Manage a real Windows directory from a single authoritative DrRx spec file written in a strict UDL (tree) syntax.
+* UDL core:
+  * Entities: `.` (root), `--` (directory op), `==` (file op).
+  * Flow: `+` opens a vein (new branch), `:` closes flow, `|` carries the vein vertically between parent/children.
+  * Layout rules: Double-space for hierarchical steps; when a vein is open (`+`), child alignment can use one space. New lines must align to the terminal character of the prior operator as shown in examples. Root files appear first; then directories; veins explicitly connect files/directories.
+* Authoring intent: Human-readable, strict, unambiguous tree that can be parsed to create/update the real filesystem exactly as declared.
+* CLI intent ("drrx" / "drrxm"): Treat the DrRx spec as the source of truth and provide commands to:
+  * commands:
+    * inject (initialize/apply spec to target dir; supports `--file`, `--dir`, `--all`, `--force`, `--dry-run`)
+    * list / ls, restore, del/deldir/delall, adddir, addfile
+  * utilities:
+    * help (h)
+    * log (l)
+    * audit (a)
+    * clear (c)
+    * quicksave (qs)
+* Operating model: Deterministic reconciliation between the DrRx spec and the target directory, with dry-run and logging/auditing.
+
+## Related Documentation
+* [Phase 2 - Implementation Details](./phase_2.md)
+* [Phase 3 - Documentation Suite Plan](./phase_3.md)
+* [UDL Overview](../01-concepts/udl-overview.md)
+* [Mental Model](../01-concepts/mental-model.md)
+* [What is DrRx](../01-concepts/what-is-drrx.md)
