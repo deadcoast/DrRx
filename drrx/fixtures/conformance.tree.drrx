@@ -1,0 +1,20 @@
+.                                   # root
++== .drrx.conf.yaml                 # root files block (contiguous)
++== README.md
+|                                   # spacer: next root item is a directory
++-- src/                            # open vein: children follow
+| +== main.py                       # files first
+| :== util.py
+| |                                 # spacer before subdirectories
+| +-- modules/
+| | +== mod_a.py
+| | :== mod_b.py
+| |
+| :-- features/                     # last sibling at this depth; children permitted
+|   +== feat_one.py
+|   :== feat_two.py
+|
+:-- docs/                           # closed branch; no root siblings after its subtree
+  :== overview.md
+  |                                 # spacer before subdirectories
+  :-- guides/                       # closed: no children listed

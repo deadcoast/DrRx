@@ -46,7 +46,7 @@ Dr.Rx is a strict, tree syntax (UDL) for managing Windows directory — files, f
 | | +== mod_a.py
 | | :== mod_b.py
 | |
-| +-- features/
+| :-- features/
 |   +== feat_one.py
 |   :== feat_two.py
 |

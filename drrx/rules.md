@@ -53,6 +53,20 @@ Index
 - Violations: None.
 - References: syntax-overview.md §1 Source File Structure.
 
+<a id="SP.05"></a>
+[SP.05] Single-space operator separation (MUST)
+- Summary: Exactly one space MUST separate the operator token ("--" or "==") from the name; no additional padding.
+- Details: Flow prefix spacing is normalized; token-to-name spacing is strict for reliable lexing.
+- Violations: Hard error; formatters MAY auto-fix.
+- References: syntax-overview.md §2 Line Forms.
+
+<a id="SP.06"></a>
+[SP.06] No indentation on root line (MUST)
+- Summary: The root "." MUST start at column 1 with no leading spaces.
+- Details: Aligns with tree rendering and avoids ambiguity.
+- Violations: Hard error; formatters MAY auto-fix.
+- References: syntax-overview.md §1.
+
 ---
 
 ## FW — Flow Markers
@@ -79,9 +93,9 @@ Index
 - References: syntax-overview.md §3.
 
 <a id="FW.04"></a>
-[FW.04] Use `:` when no children follow (SHOULD)
-- Summary: A node with no children SHOULD use `:` to close its branch.
-- Details: Improves clarity for leaf nodes, both files and directories.
+[FW.04] Use `:` when no more siblings follow (SHOULD)
+- Summary: A line at depth N SHOULD use `:` to indicate that after this node’s subtree, no more siblings at depth N will follow.
+- Details: `:` does not prohibit children; it closes sibling continuity at the current depth.
 - Violations: None or warning depending on strictness.
 - References: syntax-overview.md §3.
 
@@ -107,10 +121,10 @@ Index
 - References: syntax-overview.md §2 Line Forms.
 
 <a id="FW.08"></a>
-[FW.08] Closed directory has no children (MUST)
-- Summary: A directory declared with `:` MUST NOT have children.
-- Details: If children are present at greater depth after a `:` directory line, this is invalid structure.
-- Violations: Hard error.
+[FW.08] Closed branch correctness (MUST)
+- Summary: A `:` at depth N closes sibling continuity at depth N; no further siblings at that depth may follow after this node’s subtree.
+- Details: Children of the `:` node are permitted; the prohibition is on later siblings at the same depth.
+- Violations: Hard error if a sibling at the same depth appears after a `:` branch.
 - References: syntax-overview.md §3.
 
 <a id="FW.09"></a>
@@ -133,6 +147,34 @@ Index
 - Details: Mirrors the style used in examples to aid scanability.
 - Violations: Warning at most.
 - References: syntax-overview.md examples at top-level.
+
+<a id="FW.12"></a>
+[FW.12] No flow markers on root line (MUST)
+- Summary: The root line must be a single "." with no flow prefix ("+", ":", or "|").
+- Details: Flow applies to child/sibling rendering, not root.
+- Violations: Hard error.
+- References: syntax-overview.md §1.
+
+<a id="FW.13"></a>
+[FW.13] File branch markers control siblings (MUST)
+- Summary: When used before file lines, "+" means more siblings will follow later at the same depth; ":" means this is the last sibling at the depth.
+- Details: Files never have children; markers control only sibling continuity.
+- Violations: Hard error if interpreted otherwise.
+- References: syntax-overview.md §3.
+
+<a id="FW.14"></a>
+[FW.14] Flow markers limited to prefix (MUST)
+- Summary: "|", "+", and ":" may appear only in the flow prefix or as a standalone "|" spacer line; they MUST NOT appear after the operator/name.
+- Details: Prevents ambiguous tokenization.
+- Violations: Hard error.
+- References: syntax-overview.md §2.
+
+<a id="FW.15"></a>
+[FW.15] Spacer lines carry no annotations (MUST)
+- Summary: Standalone "|" spacer lines MUST NOT include annotations.
+- Details: Only an optional comment is allowed after the bar.
+- Violations: Hard error; formatters MAY move comments to preceding line.
+- References: syntax-overview.md §2, §3.
 
 ---
 
@@ -294,6 +336,13 @@ Index
 - Violations: Warning.
 - References: syntax-overview.md §3 (spacer behavior).
 
+<a id="VL.07"></a>
+[VL.07] Excessive spacer lines (SHOULD)
+- Summary: Multiple consecutive spacer `|` lines at the same depth SHOULD be flagged.
+- Details: Only a single spacer is needed between file and directory groups.
+- Violations: Warning; formatters MAY collapse to one.
+- References: syntax-overview.md §3.
+
 <a id="VL.06"></a>
 [VL.06] Grouping violations (MUST)
 - Summary: Interleaving files and directories within a block violates [OR.02](#OR.02).
@@ -393,3 +442,9 @@ Index
 References
 - Full syntax and grammar: `drrx/syntax-overview.md`
 - CLI behavior: `drrx/drrx.yaml`
+<a id="NM.05"></a>
+[NM.05] Directory name trailing slash equivalence (SHOULD)
+- Summary: Directory names are equivalent with or without a trailing "/"; comparisons SHOULD ignore a trailing slash.
+- Details: Formatters MAY normalize trailing "/" usage consistently across the document.
+- Violations: Warning on mixed use at the same depth/path.
+- References: syntax-overview.md §2.

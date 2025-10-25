@@ -12,7 +12,7 @@ FLOW OPERATORS (see [FW.*](rules.md#FW.01)):
 
 - `|`: vein — Draws a vertical continuation line to connect siblings/children. Required wherever a parent’s flow remains open.
 - `+`: open_vein — Opens/continues flow from the current node so children may follow. Paired with `|` on subsequent lines under the same column.
-- `:`: close_vein — Closes flow from the current node so no further children follow under that branch.
+- `:`: close_vein — Closes sibling continuity at the current depth; after this node’s subtree, no more siblings follow at this depth (children of this node are allowed).
   - Grouping convention: within a directory, list files first, insert a spacer `|` line, then list subdirectories (see [OR.02](rules.md#OR.02)).
   - File→Directory spacer — After a file at depth N, when a directory sibling follows at the same depth, insert a standalone `|` line at depth N to visually separate groups (see [FW.06](rules.md#FW.06)).
 
@@ -26,8 +26,8 @@ Minimal examples:
 
   ```drrx
   .                 # Root directory indicator
-  +-- python/       # `+` opens flow for children of `python/`
-  | :== main.py     # `:` file, no further children below `python/`
+  +-- python/       # `+` opens vein under `python/`
+  | :== main.py     # `:` file, no further siblings at this depth
   ```
 
   ```drrx
@@ -175,8 +175,8 @@ Where:
   - When a file at depth N is followed by a directory sibling at depth N, insert a dedicated spacer line consisting only of a properly indented `|` to separate file and directory blocks (see [FW.06](rules.md#FW.06)).
   - The spacer line is semantically neutral; parsers MUST accept and ignore it structurally.
 - Closing flow (`:`):
-  - Use `:` instead of `+` before an operator to signal that no children will follow for the current branch after this line.
-  - `:` on a directory line means the directory has no children defined. On a file line, it simply indicates no further continuation at that branch.
+  - Use `:` to signal that after this node’s subtree, no further siblings will follow at the same depth. Children of the `:` node are permitted.
+  - On file lines, `+`/`:` control sibling continuity only; files never have children.
 
 Illustrative depth alignment:
 

@@ -1,0 +1,13 @@
+{
+  "target": "C:\\projects\\demo",
+  "drrxFile": "C:\\projects\\demo\\conformance.tree.drrx",
+  "entries": [
+    { "path": "src", "kind": "dir", "status": "present", "desired": { "state": "present" }, "actual": { "exists": true } },
+    { "path": "src\\main.py", "kind": "file", "status": "present", "desired": { "state": "present" }, "actual": { "exists": true } },
+    { "path": "src\\util.py", "kind": "file", "status": "create", "desired": { "state": "present" }, "actual": { "exists": false }, "diff": { "changeType": "add" } },
+    { "path": "src\\modules", "kind": "dir", "status": "present", "desired": { "state": "present" }, "actual": { "exists": true } },
+    { "path": "src\\modules\\mod_b.py", "kind": "file", "status": "change", "desired": { "state": "present" }, "actual": { "exists": true }, "diff": { "changeType": "modify", "notes": "content differs" } },
+    { "path": "build", "kind": "dir", "status": "delete", "desired": { "state": "absent" }, "actual": { "exists": true }, "diff": { "changeType": "remove" } }
+  ]
+}
+

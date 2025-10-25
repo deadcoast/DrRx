@@ -341,3 +341,183 @@ Grouping (OR.02) is mandatory: files must be contiguous, followed by a spacer �
 Spacer-only lines are semantically neutral and supported by the grammar; parsers should not emit AST nodes for them but should include diagnostics when orphaned (VL.05).
 
 ## 0.0.8
+
+Here’s a tight set of revisions that complete your list and keep everything consistent and actionable.
+
+What I added
+
+AST example + validation
+
+Added a worked AST JSON from your “Example DrRx Tree Syntax”
+drrx/examples/ast-example.json
+Validate locally:
+Node (AJV): npx ajv -s drrx/ast.schema.json -d drrx/examples/ast-example.json
+Python (jsonschema): python -m jsonschema -i drrx/examples/ast-example.json drrx/ast.schema.json
+Schemas + README
+
+Annotations schema: drrx/annotations.schema.json
+List --diff schema: drrx/list-diff.schema.json
+Schemas README with pointers, validation commands, and a sample list --diff JSON:
+drrx/schemas/README.md
+Rules changes (severity and back-links)
+
+WN.02 (long path support): added and linked from overview (syntax-overview.md: path length bullet now references WN.02)
+FW.06 (file→dir spacer) is now a hard error if missing; added explicit back-links to overview:
+drrx/rules.md: FW.06 references “Flow and Indentation Rules” and “Conformance Examples”
+OR.02 (files-then-spacer-then-dirs) upgraded to MUST; VL.06 adjusted to error
+Added direct section links in rules.md wherever helpful
+UDL Validation Map
+
+One-pager mapping rule IDs to editor diagnostics:
+drrx/udl-validation-map.md
+Errors include: SP.01, SP.02 (ambiguous), FW.06, FW.07, FW.08, FW.10, VL.01, OR.02
+Warnings include: SP.03, FW.02, FW.03, FW.11, VL.02, VL.05, WN.02
+CLI doc tweak for JSON output
+
+Updated list command to reference the new list-diff schema and mention --json output:
+drrx/drrx.yaml: list → “Supports --json output (see drrx/list-diff.schema.json)”
+Root README
+
+README.md with a clear summary, why it helps, how it works, medium-sized correct syntax example, usage with CLI, and validation commands.
+Key links and anchors maintained
+
+Overview references:
+File→Directory spacer documented and linked to [FW.06].
+Grouping convention (files first, spacer, then dirs) linked to [OR.02].
+Path length references [WN.02].
+Formal grammar accepts flow_spacer lines; parser checklist mentions skipping them.
+Rules back-links to overview:
+FW.06, FW.09, OR.02, VL.* now point to named sections and examples in syntax-overview.md using GitHub anchors.
+Commands you can run locally
+
+Validate AST example against schema:
+Node: npx ajv -s drrx/ast.schema.json -d drrx/examples/ast-example.json
+Python: python -m jsonschema -i drrx/examples/ast-example.json drrx/ast.schema.json
+Validate list --diff JSON:
+npx ajv -s drrx/list-diff.schema.json -r drrx/annotations.schema.json -d path/to/list-diff.json
+Files touched
+
+Added: README.md
+Added: drrx/examples/ast-example.json
+Added: drrx/annotations.schema.json
+Added: drrx/list-diff.schema.json
+Added: drrx/schemas/README.md
+Added: drrx/udl-validation-map.md
+Updated: drrx/drrx.yaml (list --json reference)
+Updated: drrx/syntax-overview.md (WN.02 reference, spacer/grouping notes already present)
+Updated: drrx/rules.md (severity flips, back-links, FW.*and OR.* expansions)
+
+Acknowledged on the example: you are correct. In the README example, the line “| +-- features/” should be “| :-- features/” because the features directory is the last sibling at that depth under src, even though it has children. I fixed README.md accordingly.
+
+Important: I also corrected our formal semantics to match your design — “+” and “:” control sibling continuity (open/close vein) at the current depth; they do not prohibit or imply children. Specifically:
+
+“+” means more siblings will follow at the same depth later.
+“:” means no more siblings at that depth will follow after this node’s subtree.
+Whether a node has children is determined by indentation and subsequent lines, not by “+”/“:”.
+What I updated to align with your syntax
+
+README example fix
+
+README.md: replaced “| +-- features/” with “| :-- features/”.
+Rules (normative) adjusted and expanded
+
+FW.04 now states “Use ‘:’ when no more siblings follow” (not “no children”).
+FW.08 now states “Closed branch correctness” (no later siblings at same depth after a ‘:’ branch; children are allowed).
+New rules that make UDL operational and unambiguous:
+SP.05 Single-space operator separation (exactly one space after “--”/“==”)
+SP.06 No indentation on root line (“.” must be at column 1)
+FW.12 No flow markers on the root line
+FW.13 File branch markers control siblings only; files never have children
+FW.14 Flow markers limited to prefix or standalone “|” lines (not after name)
+FW.15 Spacer lines carry no annotations (only optional comments)
+VL.07 Excessive spacer lines (warn on consecutive spacers)
+Severity updates requested earlier remain:
+FW.06 File→Directory spacer is a Hard error when missing.
+OR.02 Files-then-spacer-then-dirs is MUST; VL.06 grouping violations are Hard errors.
+Back-links in rules to overview sections to aid navigation are present.
+Overview (syntax-overview.md) aligned
+
+Flow operators dictionary for “:” updated: “Closes sibling continuity at the current depth; children allowed.”
+§3 “Closing flow” updated to sibling semantics; files’ “+”/“:” control only sibling continuity.
+Path-length bullet links to [WN.02] in rules.
+Grammar supports spacer-only “|” lines (semantically neutral).
+Additional rules now defined (operationally important)
+
+Structural and tokenization
+
+SP.05: exactly one space after operator before the name.
+SP.06: root “.” has no indentation.
+FW.12: no flow markers on the root line.
+FW.14: “| + :” only in prefix or as a pure spacer line.
+FW.15: spacer line cannot carry annotations (comment allowed).
+Continuity and grouping
+
+FW.13: “+”/“:” on files affect sibling continuity only (files never have children).
+FW.06 (MUST): spacer “|” is required between file group and following directory group at same depth.
+OR.02 (MUST): within a block, files must be contiguous and precede directories with a spacer in between.
+VL.07: warn on consecutive spacers.
+Windows semantics
+
+WN.02 (SHOULD): long-path support with \?; warn when projected paths exceed limits.
+Annotations + execution
+
+AN.03 (MUST): mode: file|dir overrides implicit detection (strict handling).
+AN.04 (MUST): ignore: true means executor doesn’t modify the node/subtree.
+EX.05 (SHOULD): file content defaults; no source → preserve if exists, empty on new; with source → materialize.
+
+## 0.0.9
+
+Acknowledged. Your correction is right: in the README medium example the line “| +-- features/” must be “| :-- features/” because features is the last sibling at that depth. I fixed README.md accordingly and aligned the formal rule: “+”/“:” control sibling continuity, not whether a node has children.
+
+What I added and updated
+
+Conformance fixtures
+
+drrx/fixtures/conformance.tree.drrx: Working-scope .drrx syntax fixture that adheres to strict rules (files-then-spacer-then-dirs, required spacers, correct +/: usage).
+drrx/fixtures/conformance.list-diff.json: Seed “list --diff” JSON aligned to drrx/list-diff.schema.json for tests.
+Validation targets
+
+Makefile: validate-ast, validate-diff, validate-all targets using AJV (npx ajv). This streamlines local schema checks.
+Rules (new and revised)
+
+FW.04 now defines “:” as closing sibling continuity at the current depth (children are allowed).
+FW.08 now prohibits more siblings at the same depth after a “:” branch; children under that node are fine.
+SP.05 Single-space operator separation (MUST) — exactly one space after “--”/“==”.
+SP.06 No indentation on root line (MUST).
+FW.12 No flow markers on the root line (MUST).
+FW.13 File branch markers control siblings; files never have children (MUST).
+FW.14 Flow markers limited to prefix or standalone “|” (MUST).
+FW.15 Spacer lines carry no annotations (MUST).
+VL.07 Excessive spacer lines (warn).
+NM.05 Directory trailing slash equivalence (SHOULD) — comparisons ignore a trailing “/”; warn on mixed use; formatters may normalize.
+Overview and schema alignment
+
+drrx/syntax-overview.md: Updated “:” semantics in both the dictionary and §3 “Flow and Indentation Rules,” and clarified the minimal example comments (“no further siblings”).
+drrx/ast.schema.json: Updated flow flags descriptions
+open: “open vein; first child places a ‘|’”
+close: “close sibling continuity at this depth”
+Overview still references [WN.02] (long paths), [FW.06] (spacer rule), and [OR.02] (grouping).
+Schemas and CLI
+
+drrx/annotations.schema.json (already added), drrx/list-diff.schema.json (already added).
+drrx/schemas/README.md has validation commands and a sample list --diff document.
+drrx/drrx.yaml: list command now references the JSON output schema.
+Run local validations
+
+Validate AST example:
+npx ajv -s drrx/ast.schema.json -d drrx/examples/ast-example.json
+Validate list --diff:
+npx ajv -s drrx/list-diff.schema.json -r drrx/annotations.schema.json -d drrx/fixtures/conformance.list-diff.json
+Or use Make:
+make validate-ast
+make validate-diff
+make validate-all
+Swept and corrected “:” semantics
+
+Updated core dictionary and §3 flow rules to state “:” closes sibling continuity, not children.
+Adjusted schema and a minimal example comment to avoid implying “:” forbids children.
+Kept needed mentions of “files have no children” and “dangling + with no children” as they are correct in context.
+NM.05 added and usage consistency
+
+Rule added: trailing slash is cosmetic; comparisons ignore it; warn on mixed use at same path.
+Current fixtures/examples use trailing slashes consistently on directories. If you want hard normalization (always strip or always keep “/”), I can add a formatter guideline.

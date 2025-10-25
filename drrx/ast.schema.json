@@ -151,11 +151,11 @@
       "properties": {
         "open": {
           "type": "boolean",
-          "description": "Line used '+' to open flow for children."
+          "description": "Line used '+' to open vein; first child places a '|' under this node."
         },
         "close": {
           "type": "boolean",
-          "description": "Line used ':' to close flow (no children)."
+          "description": "Line used ':' to close sibling continuity at this depth (no further siblings)."
         },
         "continue": {
           "type": "boolean",
