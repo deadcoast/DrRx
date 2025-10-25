@@ -500,9 +500,9 @@ Finally implement the OR.02 quick-fix with conservative scope (single block, no 
 
 ## 0.3.1
 [CHANGELOG:0.3.0 - HEADING:0.3.9](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
-1. Analyze [TODO.md](TODO/0.0.0/0.0.1/TODO.md) , [TODO.md](TODO/0.0.0/0.0.2/TODO.md) ,
+1. Analyze [TODO.md](docs/TODO/0.0.0/0.0.1/TODO.md) , [TODO.md](docs/TODO/0.0.0/0.0.2/TODO.md) ,
 2. validate their integration claims against the source code,
-3. create a new `TODO\0.0.0\0.0.3\` [TODO.md](TODO/0.0.0/0.0.3/TODO.md) file based on what is missing from working integration
+3. create a new `TODO\0.0.0\0.0.3\` [TODO.md](docs/TODO/0.0.0/0.0.3/TODO.md) file based on what is missing from working integration
 
 ## 0.3.2
 [CHANGELOG:0.4.0 - HEADING:0.4.0](Architecture/CHANGELOGS/0.4.0/CHANGELOG.md)
