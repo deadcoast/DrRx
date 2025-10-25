@@ -1,0 +1,15 @@
+.                       # root
++== a.txt               # root files first
+| +== b.txt
+|
++-- dir1/               # mis-grouped: dir before following files at same depth
+| +== d1a.txt
+| +== d1b.txt
+|
++== c.txt               # should be regrouped above dir1/ with a single spacer inserted
++-- dir2/
+| +== d2a.txt
+|
+:+-- nested/
+  +== n.txt
+

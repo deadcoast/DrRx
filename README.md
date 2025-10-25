@@ -1,3 +1,4 @@
+<!-- calls: agent-guide -> AGENTS.md -->
 # Dr.Rx — Directory Remedy
 
 Dr.Rx is a strict, tree syntax (UDL) for managing Windows directory — files, folders, and their groupings — and a set of tooling patterns to reconcile a real directory with that declaration.

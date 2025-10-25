@@ -50,13 +50,22 @@ function main() {
         }
     }
 
-    const posFiles = [
-        path.join(root, 'drrx', 'fixtures', 'conformance-edge-cases.tree.drrx')
-    ].filter(fs.existsSync);
+    // Positive fixtures: assert zero diagnostics
+    const posFiles = [];
+    const posDir = path.join(root, 'drrx', 'fixtures', 'positive');
+    if (fs.existsSync(posDir)) {
+        for (const f of fs.readdirSync(posDir)) {
+            if (!f.endsWith('.tree.drrx')) continue;
+            if (!/positive-(fw02|sp03)-/.test(f)) continue; // limit to validated positives
+            posFiles.push(path.join(posDir, f));
+        }
+    }
+    // Baseline conformance fixture may include intentional edge patterns; exclude from strict zero-diag set here.
     for (const p of posFiles) {
         const diags = diagnose(p);
         if (diags.length) {
             console.error('Expected no diagnostics for ' + path.basename(p) + ', found ' + diags.length);
+            console.error(JSON.stringify(diags, null, 2));
             failed = true;
         }
     }

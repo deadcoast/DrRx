@@ -1,0 +1,4 @@
+.                         # root
++ -- dir/
+  |+== a.txt               # continuity '|' present; sibling follows
+    :== b.txt               # last sibling at this depth; no '|'

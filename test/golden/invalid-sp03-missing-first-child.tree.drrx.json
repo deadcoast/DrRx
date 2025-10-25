@@ -1,0 +1,4 @@
+[
+  { "rule": "SP.03", "line": 3, "column": 1 },
+  { "rule": "FW.02", "line": 3, "column": 1 }
+]

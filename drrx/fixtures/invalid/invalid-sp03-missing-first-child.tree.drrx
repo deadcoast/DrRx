@@ -1,0 +1,4 @@
+.                  # root
++-- dir/
+  +== a.txt       # EXPECT: SP.03 (first child under '+', no '|'), and FW.02 because sibling follows
+  :== b.txt

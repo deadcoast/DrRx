@@ -1,0 +1,4 @@
+.                  # root
++-- dir/
+  +== a.txt       # EXPECT: FW.02 (missing '|' with following sibling)
+  :== b.txt

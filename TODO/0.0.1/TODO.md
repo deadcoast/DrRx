@@ -6,9 +6,7 @@ Goals
 - Keep docs and schemas in lockstep with the highlighter/linter.
 
 Deliverables
-- VS Code extension (TextMate grammar + diagnostics engine)
-- Notepad++ UDL definition
-- Sublime Text `.sublime-syntax` (optional)
+- VS Code extension (diagnostics engine)
 - JetBrains (plugin or simple inspection profile, optional)
 - CI validations and release packaging
 
@@ -31,28 +29,19 @@ Tasks
    - Provide quick fixes:
      - Insert spacer (`|`) (FW.06), insert/remove continuity `|` (FW.02/SP.03), regroup files/dirs (OR.02), fix operator spacing (SP.05), remove extra spacers (VL.07).
 
-4) Notepad++ UDL
-   - Define UDL: operators as keywords, comments `#`, delimiters for annotations `{}` and quotes `"..."`.
-   - Provide color styles and folding rules; at minimum highlight spacer-only `|` and flow prefix.
-   - Document limitations vs. VS Code diagnostics.
-
-5) Sublime/JetBrains (optional)
-   - Port grammar to `.sublime-syntax`; validate basic highlighting.
-   - JetBrains: explore simple inspection to surface key errors (SP.01/02, FW.06, OR.02).
-
-6) Fixtures and Tests
+4) Fixtures and Tests
    - Use conformance fixtures:
      - `drrx/fixtures/conformance.tree.drrx` (baseline)
      - `drrx/fixtures/conformance-edge-cases.tree.drrx` (quoted names, spacer edges, grouping violations, missing spacers, reserved names)
    - Add golden snapshots for tokenization and diagnostics.
    - Add perf test on large synthetic trees; set baseline budgets.
 
-7) Tooling and CI
+5) Tooling and CI
    - Add npm scripts: `lint:drrx`, `validate:ast`, `validate:diff` (wrap AJV and diagnostics engine).
    - Integrate Makefile targets with npm (optional); run in CI on PRs.
    - Publish VS Code extension (marketplace metadata, versioning, changelog).
 
-8) Documentation Sync
+6) Documentation Sync
    - Update `drrx/syntax-overview.md` and `drrx/rules.md` on any token/rule changes resulting from highlighter feedback.
    - Keep `drrx/udl-validation-map.md` aligned with actual diagnostics severities.
    - Add a “Highlighter Support” section in README with install/use instructions.
@@ -61,4 +50,7 @@ Milestones
 - M1: Token spec + basic highlighting
 - M2: Diagnostics for hard errors (FW.06, OR.02, SP.01/02, FW.07/08/10)
 - M3: Quick fixes and formatting assists (spacers, grouping, continuity bars)
+
 - M4: Cross-editor coverage, perf baseline, CI gating
+
+---

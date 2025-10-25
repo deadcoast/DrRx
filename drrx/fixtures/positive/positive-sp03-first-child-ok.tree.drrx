@@ -1,0 +1,4 @@
+.                         # root
++ -- dir/
+  |+== a.txt               # first child under '+' has '|' aligned to parent content column
+    :== b.txt
