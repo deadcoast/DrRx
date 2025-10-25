@@ -386,7 +386,7 @@ Implement OR.02 regroup quick-fix (batch move files above dirs and insert spacer
 If you want, I can proceed now with the per-line token model and the OR.02 regroup quick-fix in the VS Code extension.
 
 ## 0.2.6
-[REVISIONLOG:0.1.0 - HEADING:0.1.8](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[REVISIONLOG:0.1.0 - HEADING:0.1.8](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - Port operator/name extraction to the token model for quoted names and annotations
 - Update VL.02/SP.02 messages to include the expected vs. found columns and depth
 - Harden the OR.02 quick-fix to handle more complex sibling blocks and preserve spacer idempotence
@@ -431,7 +431,7 @@ npm run test
 If any goldens mismatch, the harness will log differences. Confirm and adjust goldens or rule logic as needed.
 
 ## 0.2.7
-[REVISIONLOG:0.1.0 - HEADING:0.1.9](Architecture/REVISIONLOG/0.1.0/REVISIONLOG.md)
+[REVISIONLOG:0.1.0 - HEADING:0.1.9](docs/REVISIONLOG/0.1.0/REVISIONLOG.md)
 CHANGES FOCUS:
 1. finish the per-line token model
 2. add/harden the OR.02 regroup quick-fix in the VS Code extension. Implemented both and ran the fixture tests; details and next steps below.
@@ -490,7 +490,7 @@ lib/drrx-lint.js:88, 120, 156, 216, 253, 280, 318, 332, 373
 editors/vscode/extension.js:13, 37, 60
 
 ## 0.2.8
-[REVISIONLOG:0.2.0 - HEADING:0.2.0](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.0](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 "OR.02 quick-fix":""regroups entire same-depth sibling blocks, handles multiple file blocks, and is idempotent across complex cases"
 Comprehensive regroup for OR.02
 Reorders all same-depth file segments above directories within the sibling block.
@@ -514,7 +514,7 @@ This code action operates on the full document buffer for correctness and simpli
 The linter currently has some fixture mismatches (root precedence OR.01/OR.02/OR.04 and the new FW.06 spacer-before-file rule). Those don’t impact this quick-fix but I can tune precedence next to make tests green.
 
 ## 0.2.9
-[REVISIONLOG:0.2.0 - HEADING:0.2.1](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.1](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 Progress update: extended the OR.02 quick-fix comprehensively; now tuning root precedence and tests. I also added a smoke fixture for quick-fix idempotence.
 VS Code quick-fix (OR.02)
 Comprehensive regroup across a sibling block:
@@ -564,7 +564,7 @@ Prioritized not adding more suppression than necessary and avoided touching vali
 The comprehensive OR.02 quick-fix is idempotent and should behave well on multi-block interleavings; it preserves attached subtrees and comment lines around the regrouped block.
 
 ## 0.3.0
-[REVISIONLOG:0.2.0 - HEADING:0.2.2](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.2](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 Completed the final root precedence tweak and extended the quick-fix coverage. The test suite is now clean for all invalid fixtures; one positive fixture still emits a diagnostic (details below).
 Root precedence tuned:
 OR.01 vs OR.02 at root: a later root file only forces OR.02 when that later file line has a continuity bar ‘|’ at root. A later file with only ‘+’ now yields OR.01 as expected. lib/drrx-lint.js: root lookahead block
@@ -582,7 +582,7 @@ drrx/fixtures/conformance-edge-cases.tree.drrx reports 1 diagnostic. The harness
 Likely cause: it intentionally contains a pattern that our linter flags (e.g., a consecutive spacer or grouping violation). The file comments note “EXPECTED WARNING/ERROR”, but the test harness treats it as a passing fixture.
 
 ## 0.3.1
-[REVISIONLOG:0.2.0 - HEADING:0.2.3](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.3](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 reclassified the conformance edge case to an invalid fixture, generated the golden, and confirmed the suite is green.
 Moved fixture:
 from drrx/fixtures/conformance-edge-cases.tree.drrx
@@ -597,7 +597,7 @@ Revision log
 
 ## 0.3.2
 
-[REVISIONLOG:0.2.0 - HEADING:0.2.4](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.4](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 
 Validation pass for TODO/0.0.1/TODO.md and a concrete plan for what’s incomplete.
 Summary status:
@@ -638,7 +638,7 @@ Documentation:
 - Add “Highlighter Support” section to README with install, settings, and quick-fix list; keep UDL validation map synced with current severities.
 
 ## 0.3.3
-[REVISIONLOG:0.2.0 - HEADING:0.2.5](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.5](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 Implemented continuity quick-fixes and CI.
 Continuity quick-fixes:
 SP.03 “Insert first-child continuity |”: inserts ‘|’ aligned under the parent’s content column when the parent has a ‘+’.
@@ -650,7 +650,7 @@ File: .github/workflows/ci.yml
 Notes: Aligned insertion to parent.contentCol when a parent ‘+’ exists, to avoid creating SP.02 follow-ups.
 
 ## 0.3.4
-[REVISIONLOG:0.2.0 - HEADING:0.2.6](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.6](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 Added targeted fixtures for FW.02 and SP.03, tests stayed green.
 What changed:
 Linter adjustments:
@@ -676,7 +676,7 @@ Test result
 - Ran npm test; all fixture diagnostics match goldens.
 
 ## 0.3.5
-[REVISIONLOG:0.2.0 - HEADING:0.2.7](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.7](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 Added positive fixtures for FW.02/SP.03 and extended the test harness to assert zero diagnostics on them.
 Fixed the linter’s first‑child logic so SP.03 only applies to the first child under a ‘+’ parent, then re‑baselined impacted goldens.
 All tests green.
@@ -703,7 +703,7 @@ npm test runs clean: All fixture diagnostics match golden files.
 SP.03/FW.02 positive cases now validated as “no diagnostics”.
 
 ## 0.3.6
-[REVISIONLOG:0.2.0 - HEADING:0.2.8](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.8](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 Delivered the 0.2.8 revisions with alignment fixes, restored OR.02 root detection, and broader positive coverage — all tests pass.
 
 What I implemented
@@ -738,7 +738,7 @@ Positive FW.02/SP.03 fixtures are zero-diagnostics and caught by the harness.
 CI already runs tests and schema validations on PRs/pushes.
 
 ## 0.3.7
-[REVISIONLOG:0.2.0 - HEADING:0.2.9](Architecture/REVISIONLOG/0.2.0/REVISIONLOG.md)
+[REVISIONLOG:0.2.0 - HEADING:0.2.9](docs/REVISIONLOG/0.2.0/REVISIONLOG.md)
 Promoted the richer positive fixture to zero-diagnostics by tightening alignment semantics (without violating your spacing design),
 Restored the OR.02 at root as intended, and added two new positive variants to broaden coverage.
 All tests are green.
@@ -774,7 +774,7 @@ Quick-fixes for SP.03/FW.02 work with the newly added positive/negative coverage
 CI workflow continues to run tests and schema validations on push/PR.
 
 ## 0.3.8
-[REVISIONLOG:0.3.0 - HEADING:0.3.0](Architecture/REVISIONLOG/0.3.0/REVISIONLOG.md)
+[REVISIONLOG:0.3.0 - HEADING:0.3.0](docs/REVISIONLOG/0.3.0/REVISIONLOG.md)
 Added a robust positive fixture that exercises quoted names, trailing slashes, and inline annotations, and I clarified the inline bar vs. spacer guidance in the overview with contextual rule links.
 All tests green.
 Positive fixture for quoted names, trailing slashes, annotations
@@ -802,7 +802,7 @@ Harness asserts zero diagnostics for all positives.
 No changes to spacing semantics beyond what we aligned previously (SP.02 accepts either adjacency or one space after the bar), staying consistent with your design.
 
 ## 0.3.9
-[REVISIONLOG:0.3.0 - HEADING:0.3.1](Architecture/REVISIONLOG/0.3.0/REVISIONLOG.md)
+[REVISIONLOG:0.3.0 - HEADING:0.3.1](docs/REVISIONLOG/0.3.0/REVISIONLOG.md)
 TODO Validation summary:
 0.0.1 TODO:
 VS Code grammar + diagnostics: implemented.
@@ -837,4 +837,4 @@ All changes made:
 Added new file: TODO/0.0.0/0.0.3/TODO.md
 
 ### 0.4.0
-[REVISIONLOG:0.3.0 - HEADING:0.3.2](Architecture/REVISIONLOG/0.3.0/REVISIONLOG.md)
+[REVISIONLOG:0.3.0 - HEADING:0.3.2](docs/REVISIONLOG/0.3.0/REVISIONLOG.md)

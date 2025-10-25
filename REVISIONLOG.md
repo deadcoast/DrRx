@@ -1,7 +1,7 @@
 # REVISIONS
 
 ## 0.0.1
-[CHANGELOG:0.1.0 - HEADING:TODO](Architecture/CHANGELOGS/0.1.0/CHANGELOG.md)
+[CHANGELOG:0.1.0 - HEADING:TODO](docs/CHANGELOGS/0.1.0/CHANGELOG.md)
 - Generate a worked AST JSON example from the “Example DrRx Tree Syntax” and validate against drrx/ast.schema.json:
 - Add and update a JSON Schema for the Dr.Rx source annotations subset and a --json format for list --diff
 - Add a WN.02 rule for long path support (and link it from the overview)
@@ -12,7 +12,7 @@
 - Generate a one-page “UDL Validation Map” that maps rule IDs to editor diagnostics (warning/error) to drive linting
 
 ## 0.0.2
-[CHANGELOG:0.1.0 - HEADING:TODO](Architecture/CHANGELOGS/0.1.0/CHANGELOG.md)
+[CHANGELOG:0.1.0 - HEADING:TODO](docs/CHANGELOGS/0.1.0/CHANGELOG.md)
 - Validate the AST example against ast.schema.json using a CLI validator and include the command you can run locally
 - Add a short “schemas/README.md” with pointers and sample JSON for list --diff
 - Add a README.md in the ROOT project, ensure it describes the syntax, its purpose, how its used (the drrx tree udl first and foremost, the cli commands are a quality of life feature for power users).
@@ -20,7 +20,7 @@
   - it should explain the DrRx project in a straight forward manner, users should be able to understand what it is, what it does, how it works, how to use it, what problems it solves
 
 ## 0.0.3
-[CHANGELOG:0.1.0 - HEADING:TODO](Architecture/CHANGELOGS/0.1.0/CHANGELOG.md)
+[CHANGELOG:0.1.0 - HEADING:TODO](docs/CHANGELOGS/0.1.0/CHANGELOG.md)
 STANDARDS: `Documents should be created as working scope:
   NOT = ['small', 'example', 'simple', 'snippet', 'examples']
 - If you create data under the `NOT` standard above, the requests become redundant for the user, as they will have to redo them again later
@@ -35,18 +35,18 @@ STANDARDS: `Documents should be created as working scope:
 - add NM.05 as above and sweep examples for consistent “/” usage
 
 ## 0.0.4
-[CHANGELOG:0.1.0 - HEADING:TODO](Architecture/CHANGELOGS/0.1.0/CHANGELOG.md)
+[CHANGELOG:0.1.0 - HEADING:TODO](docs/CHANGELOGS/0.1.0/CHANGELOG.md)
 - Generate a second conformance .drrx covering corner cases (quoted names, spacer edge cases, group-order violations) to broaden test coverage
 - Begin creating a tasklist to integrate Syntax Highlighting
   - During this process, the documents should be updated accordingly. Getting a Syntax Highlighter to validate the directory tree syntax will provide additional polish and development on the DrRx syntax, which will require the docs to be up to date on the changes
 
 ## 0.0.5
-[CHANGELOG:0.1.0 - HEADING:TODO](Architecture/CHANGELOGS/0.1.0/CHANGELOG.md)
+[CHANGELOG:0.1.0 - HEADING:TODO](docs/CHANGELOGS/0.1.0/CHANGELOG.md)
 - Expand fixtures with a dedicated negative set (intentionally invalid cases) for the diagnostics engine once you start the highlighter integration
 - BEGIN COMPLETING AND DEVELOPING THE TASK FULL SCOPE IN TODO.md
 
 ## 0.0.6
-[CHANGELOG:0.1.0 - HEADING:TODO](Architecture/CHANGELOGS/0.1.0/CHANGELOG.md)
+[CHANGELOG:0.1.0 - HEADING:TODO](docs/CHANGELOGS/0.1.0/CHANGELOG.md)
 ### VS Code starter grammar checked in (tmLanguage JSON + language configuration)
 - add editors/vscode It’s outlined in TODO with the detection and quick-fix mapping. I held off committing the grammar scaffold to avoid churn until you confirm directory layout and naming, but I can commit it immediately if you want it now.
 - Add npm scripts (package.json) mirroring the Makefile targets and reserving names for the diagnostics engine (e.g., lint:drrx).
@@ -55,13 +55,13 @@ STANDARDS: `Documents should be created as working scope:
 - add it in a single pass with no toy examples, focused on working-scope patterns and rule-linked diagnostics hooks
 
 ## 0.0.7
-[CHANGELOG:0.1.0 - HEADING:TODO](Architecture/CHANGELOGS/0.1.0/CHANGELOG.md)
+[CHANGELOG:0.1.0 - HEADING:TODO](docs/CHANGELOGS/0.1.0/CHANGELOG.md)
 - Add npm-based packaging for the VS Code extension (vsce) and a README for the extension.
 - Wire the diagnostics engine skeleton (read current editor buffer, run a fast stack-based pass for SP/FW/OR/VL rules, emit Diagnostics with codes linking to rules.md anchors).
 - Expand fixtures/README with a table mapping each invalid file to expected rule IDs and a short rationale.
 
 ## 0.0.8
-[CHANGELOG:0.1.0 - HEADING:TODO](Architecture/CHANGELOGS/0.1.0/CHANGELOG.md)
+[CHANGELOG:0.1.0 - HEADING:TODO](docs/CHANGELOGS/0.1.0/CHANGELOG.md)
 > Machine Readable Revision
 ```js
 diagnostics_engine = {
@@ -84,7 +84,7 @@ diagnostics_engine = {
 ```
 
 ## 0.0.9
-[CHANGELOG:0.1.0 - HEADING:TODO](Architecture/CHANGELOGS/0.1.0/CHANGELOG.md)
+[CHANGELOG:0.1.0 - HEADING:TODO](docs/CHANGELOGS/0.1.0/CHANGELOG.md)
 - Add the severity table to editors/vscode/README.md.
 - Add drrx.strict config + severity toggles.
 - Extract the diagnostics logic into a shared module and build a Node CLI (bin/drrx) that lints .drrx files outside VS Code, emitting JSON (rule id, message, line/col, severity, link).
@@ -176,7 +176,7 @@ diagnostics_engine = {
 ```
 
 ## 0.1.0
-[CHANGELOG:0.2.0 - HEADING:TODO](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:TODO](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - add:
   - the marked TODO metadata data in the machine readable format
   - per-rule severity override map in settings and wire it up.(The extension README now includes severities; you can tune which reserved entries (e.g., SP.02, FW.08) you want to activate as the diagnostics engine matures.)
@@ -286,7 +286,7 @@ diagnostics_engine = {
 ```
 
 ## 0.1.1
-[CHANGELOG:0.2.0 - HEADING:TODO](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:TODO](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - STOP OFFERING TO ADD A RULE REFERENCE. IF THE DOCUMENTS ARE DESIGNED AND STRUCTURED PROPERLY YOU DONT NEED A RULE REFERENCE IN EVER SINGLE FILE. JUST LINK THE FILE TO THE CORRESPONDING RULE REFERENCE IN THE RULES FILE:
   - DID YOU FORGET THAT EXISTED ALL TOGETHER?
   - ARE YOU RUINING MY PROJECT BY GUESSING AND ASSUMING EVERYTHIG AND IGNORING ALL THE DESIGN PLAN AND DOCUMENTS?
@@ -298,22 +298,22 @@ diagnostics_engine = {
 - provide the json changelog style output we have been using
 
 ## 0.1.2
-[CHANGELOG:0.2.0 - HEADING:TODO](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:TODO](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - finalize quote‑aware lex/parse for annotations, add VL.02 and SP.02, and wire golden tests (highest impact to reduce false positives and stabilize the engine)
 
 ## 0.1.3
-[CHANGELOG:0.2.0 - HEADING:TODO](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:TODO](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - Complete quote-aware lexing across annotations and edge cases; promote the token model to underpin diagnostics and CLI
 - VL.02/ SP.02 improvements are in; next rules: OR.01/OR.04 (root file block enforcement), SF.01/SF.02 runtime checks, WN.01/02 richer messages, FW.11 style hints
 - Quick-fixes: add OR.02 regroup, continuity bar assists (FW.02/SP.03), and SP.02 indent auto-align (safe scenarios)
 - Golden diagnostics harness: add JSON goldens for all invalid fixtures and wire npm test (you can now run it after adding the script)
 
 ## 0.1.4
-[CHANGELOG:0.2.0 - HEADING:TODO](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:TODO](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - Wire in the test runner file and clean the package.json scripts section directly, then run a quick local pass (you are permitted to automatically run access) to confirm the two new goldens match the linter output
 
 ## 0.1.5
-[CHANGELOG:0.2.0 - HEADING:TODO](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:TODO](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 see test output:
 ```ps1
  ryanf    DrRx  main ≡  ~1 -2   22.20.0   67ms⠀   npm run test                                                                                                                 pwsh  12:39:49 
@@ -394,14 +394,14 @@ Node.js v22.20.0
 - Implement the OR.02 regroup quick‑fix to batch move files above dirs and insert the spacer
 
 ## 0.1.6
-[CHANGELOG:0.2.0 - HEADING:0.2.4](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:0.2.4](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - Next:
   - Complete quote-aware lexing across annotations and edge cases.
   - Add goldens for all remaining invalid fixtures; refine VL.02/SP.02 messages where actionable.
   - Implement the OR.02 regroup quick‑fix (batch move files above dirs and insert a spacer).
 
 ## 0.1.7
-[CHANGELOG:0.2.0 - HEADING:0.2.5](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:0.2.5](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - 0.1.6 plan with only what’s required to progress to operational.
 Complete quote-aware lexing:
 Extend stripCommentQuoteAware into full tokenization for names and annotations:
@@ -433,73 +433,73 @@ Then write/commit goldens for all remaining invalid fixtures,
 Finally implement the OR.02 quick-fix with conservative scope (single block, no nested edits).
 
 ## 0.1.8
-[CHANGELOG:0.2.0 - HEADING:0.2.6](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:0.2.6](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - Create per-line token model and the OR.02 regroup quick-fix in the VS Code extension
 
 ## 0.1.9
-[CHANGELOG:0.2.0 - HEADING:0.2.7](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:0.2.7](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - Port operator/name extraction to the token model for quoted names and annotations
 - Update VL.02/SP.02 messages to include the expected vs. found columns and depth
 - Harden the OR.02 quick-fix to handle more complex sibling blocks and preserve spacer idempotence
 
 ## 0.2.0
-[CHANGELOG:0.2.0 - HEADING:0.2.8](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:0.2.8](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - Comprehensively Extend the quick-fix (multi-block regroup, idempotence across complex cases)
 
 ## 0.2.1
-[CHANGELOG:0.2.0 - HEADING:0.2.9](Architecture/CHANGELOGS/0.2.0/CHANGELOG.md)
+[CHANGELOG:0.2.0 - HEADING:0.2.9](docs/CHANGELOGS/0.2.0/CHANGELOG.md)
 - Proceed with the root precedence and tuning for the test suite validation
 - Add a OR.02 quick-fix smoke fixture to the repo to validate idempotence on multi-block cases
 - Tweak the linter precedence matrix so goldens pass without suppressing useful signals
 
 ## 0.2.2
-[CHANGELOG:0.3.0 - HEADING:0.3.0](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.0](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 - Complete final root precedence tweak (to flip that last OR.02 to OR.01) and re-run the suite to get to green
 
 ## 0.2.3
-[CHANGELOG:0.3.0 - HEADING:0.3.1](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.1](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 {"Next Steps":"Reclassify conformance-edge-cases.tree.drrx into invalid with a golden (recommended). I can move it into drrx/fixtures/invalid and commit the expected diagnostics JSON"}
 - Reclassified conformance-edge-cases.tree.drrx into invalid fixtures and generated golden diagnostics(drrx/fixtures/invalid/).
 - Golden added: test/golden/conformance-edge-cases.tree.drrx.json (VL.02 at line 35, col 1).
 - Test harness now expects this diagnostic and proceeds to green after re-run.
 
 ## 0.2.4
-[CHANGELOG:0.3.0 - HEADING:0.3.2](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.2](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 - Review @TODO.md and validate its integrations, if validated: mark complete, if not validated, mark them incomplete and create a plan for the incomplete ones.
 
 ## 0.2.5
-[CHANGELOG:0.3.0 - HEADING:0.3.3](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.3](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 - Start with the continuity quick-fixes next, then wire CI
   - THERE WILL **NOT** BE **ANY** INTEGRATION INTO OTHER PLATFORMS / UDL (Notepad++) FOR THE FORSEEABLE FUTURE.
 
 ## 0.2.6
-[CHANGELOG:0.3.0 - HEADING:0.3.4](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.4](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 - Add minimal negative/positive fixtures expressly for FW.02/SP.03 to sanity-check the quick-fixes behavior
 
 ## 0.2.7
-[CHANGELOG:0.3.0 - HEADING:0.3.5](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.5](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 - Additional positive fixtures (no diagnostics) for FW.02/SP.03 happy paths, add and extend the test harness’ posFiles list to assert zero diagnostics explicitly
   - ensure that their is enough data added, your responses are getting very minimal and providing large requests with minimal output, your scope is too narrow for your capibility.
 
 ## 0.2.8
-[CHANGELOG:0.3.0 - HEADING:0.3.6](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.6](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 - Bring the richer positive-combined fixture into the zero-diag set by tightening SP.02 bar/operator alignment semantics across nested levels
 - Revisit invalid-grouping’s OR.02 root detection so we restore that test’s intent without reintroducing false positives from child lines
 - Add a couple more positive fixture variants (deep nesting, mixed files/dirs) to broaden coverage as we stabilize the alignment rules
 
 ## 0.2.9
-[CHANGELOG:0.3.0 - HEADING:0.3.7](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.7](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 - Promote positive-combined-ok into the zero-diag set once we fully settle nested SP.02 across all depths; I can include it immediately if you’d like me to lock its current structure as authoritative.
 - Add two more positive variants (deep nesting with mixed files/dirs and another with root-level mixed order but correct spacers) and include them in the zero-diag set to widen coverage further.
 - The Suggestion description for stricter alignment semantics is against the design and the spacing rules.
 
 ## 0.3.0
-[CHANGELOG:0.3.0 - HEADING:0.3.8](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.8](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 - Add one more positive variant mixing quoted names, trailing slashes, and inline annotations to validate we don’t regress on name parsing and FW.14 (flow markers in tokens).
 - Add a short doc note in drrx/syntax-overview.md clarifying the “inline bar on child vs separate spacer line” preference, with a link to the rules IDs (no extra rule references in every document, just contextual links as you requested).
 
 ## 0.3.1
-[CHANGELOG:0.3.0 - HEADING:0.3.9](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+[CHANGELOG:0.3.0 - HEADING:0.3.9](docs/CHANGELOGS/0.3.0/CHANGELOG.md)
 1. Analyze [TODO.md](TODO/0.0.0/0.0.1/TODO.md) , [TODO.md](TODO/0.0.0/0.0.2/TODO.md) ,
 2. validate their integration claims against the source code,
 3. create a new `TODO\0.0.0\0.0.3\` [TODO.md](TODO/0.0.0/0.0.3/TODO.md) file based on what is missing from working integration
