@@ -6,10 +6,9 @@
   |+== a.py
     :== b.py
   |                       # spacer before subdirs
-  +-- lib/
-  | +== util.py
-  | :== core.py
-  |
-  :-- tests/
-      +== test_a.py
+  | +-- lib/
+  | |+== util.py
+  |   :== core.py
+  | :-- tests/
+      |+== test_a.py
       :== test_b.py

@@ -56,7 +56,6 @@ function main() {
     if (fs.existsSync(posDir)) {
         for (const f of fs.readdirSync(posDir)) {
             if (!f.endsWith('.tree.drrx')) continue;
-            if (!/positive-(fw02|sp03)-/.test(f)) continue; // limit to validated positives
             posFiles.push(path.join(posDir, f));
         }
     }

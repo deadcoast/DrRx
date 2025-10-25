@@ -1,0 +1,16 @@
+.                                   # root
+ +== "Read Me.txt" { tag: "docs" }
+ | :== "LICENSE" { tag: "legal" }
+|                                    # spacer to next root directory
+ +-- "Project Files"/ { owner: "team" }
+ | |+== "Spec.md" { status: "final" }
+ |   :== "Plan.md" { status: "draft" }
+ | |                                  # spacer before subdirectories
+ | +-- assets/ { cdn: "true" }
+ | |+== "logo.png"
+ |   :== "icon.svg"
+ |
+ :-- "docs"/ { publish: "yes" }
+   |+== "intro.md"
+     :== "api.md"
+

@@ -1,5 +1,0 @@
-0.2.3
-
-- Reclassified conformance-edge-cases.tree.drrx into invalid fixtures and generated golden diagnostics.
-- Golden added: test/golden/conformance-edge-cases.tree.drrx.json (VL.02 at line 35, col 1).
-- Test harness now expects this diagnostic and proceeds to green after re-run.

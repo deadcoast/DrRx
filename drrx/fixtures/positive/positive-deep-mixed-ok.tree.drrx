@@ -1,0 +1,25 @@
+.                                   # root
+ +== README.md
+ | :== LICENSE
+|                                    # spacer to next root directory
+ +-- app/
+ | |+== main.py
+ |   :== util.py
+ | | :-- pkg/
+ | | |+== __init__.py
+ | | | :== core.py
+ | | | :-- data/
+ | | |   |+== vocab.txt
+ | | |     :== model.bin
+ | |
+ | | +-- features/
+ | | |+== f1.py
+ | | | :== f2.py
+ | | | :-- nested/
+ | | |   |+== inner.py
+ | | |     :== end.py
+ | |
+ | :-- tests/
+ |     |+== test_main.py
+ |       :== test_util.py
+

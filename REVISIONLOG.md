@@ -486,3 +486,23 @@ Finally implement the OR.02 quick-fix with conservative scope (single block, no 
 - Bring the richer positive-combined fixture into the zero-diag set by tightening SP.02 bar/operator alignment semantics across nested levels
 - Revisit invalid-grouping’s OR.02 root detection so we restore that test’s intent without reintroducing false positives from child lines
 - Add a couple more positive fixture variants (deep nesting, mixed files/dirs) to broaden coverage as we stabilize the alignment rules
+
+## 0.2.9
+[CHANGELOG:0.3.0 - HEADING:0.3.7](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+- Promote positive-combined-ok into the zero-diag set once we fully settle nested SP.02 across all depths; I can include it immediately if you’d like me to lock its current structure as authoritative.
+- Add two more positive variants (deep nesting with mixed files/dirs and another with root-level mixed order but correct spacers) and include them in the zero-diag set to widen coverage further.
+- The Suggestion description for stricter alignment semantics is against the design and the spacing rules.
+
+## 0.3.0
+[CHANGELOG:0.3.0 - HEADING:0.3.8](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+- Add one more positive variant mixing quoted names, trailing slashes, and inline annotations to validate we don’t regress on name parsing and FW.14 (flow markers in tokens).
+- Add a short doc note in drrx/syntax-overview.md clarifying the “inline bar on child vs separate spacer line” preference, with a link to the rules IDs (no extra rule references in every document, just contextual links as you requested).
+
+## 0.3.1
+[CHANGELOG:0.3.0 - HEADING:0.3.9](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+1. Analyze [TODO.md](TODO/0.0.0/0.0.1/TODO.md) , [TODO.md](TODO/0.0.0/0.0.2/TODO.md) ,
+2. validate their integration claims against the source code,
+3. create a new `TODO\0.0.0\0.0.3\` [TODO.md](TODO/0.0.0/0.0.3/TODO.md) file based on what is missing from working integration
+
+## 0.3.2
+[CHANGELOG:0.4.0 - HEADING:0.4.0](Architecture/CHANGELOGS/0.4.0/CHANGELOG.md)

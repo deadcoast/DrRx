@@ -486,3 +486,12 @@ Finally implement the OR.02 quick-fix with conservative scope (single block, no 
 - Bring the richer positive-combined fixture into the zero-diag set by tightening SP.02 bar/operator alignment semantics across nested levels
 - Revisit invalid-grouping’s OR.02 root detection so we restore that test’s intent without reintroducing false positives from child lines
 - Add a couple more positive fixture variants (deep nesting, mixed files/dirs) to broaden coverage as we stabilize the alignment rules
+
+## 0.2.9
+[CHANGELOG:0.3.0 - HEADING:0.3.7](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)
+- Promote positive-combined-ok into the zero-diag set once we fully settle nested SP.02 across all depths; I can include it immediately if you’d like me to lock its current structure as authoritative.
+- Add two more positive variants (deep nesting with mixed files/dirs and another with root-level mixed order but correct spacers) and include them in the zero-diag set to widen coverage further.
+- The Suggestion description for stricter alignment semantics is against the design and the spacing rules.
+
+## 0.3.0
+[CHANGELOG:0.3.0 - HEADING:0.3.8](Architecture/CHANGELOGS/0.3.0/CHANGELOG.md)

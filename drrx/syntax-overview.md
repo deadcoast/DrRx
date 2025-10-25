@@ -40,6 +40,12 @@ Minimal examples:
 
 ### Example DrRx Tree Syntax
 
+Note on continuity and spacers
+- Prefer an inline continuity bar on child lines when siblings remain at the same depth. This keeps trees compact and readable:
+  - Inline child: `| +== file.txt` (or `|+== file.txt`) under an open `+` parent.
+  - Separate spacer line: use a standalone `|` only to separate a files block from a following directories block at the same depth.
+- See rules for details and validation semantics: [FW.02](rules.md#FW.02), [SP.03](rules.md#SP.03), and [VL.02](rules.md#VL.02).
+
 ```drrx
 .                                # Root directory indicator
 +== .drrx.conf.yaml              # File operation indicator in the root directory, root files are always at the top of the syntax tree

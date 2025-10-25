@@ -1,0 +1,10 @@
+.                                  # root
+ +== .editorconfig
+ | :== .gitignore
+|                                    # spacer before root directories
+ +-- config/
+ | |+== default.yaml
+ |   :== prod.yaml
+ | :-- docs/                           # closed; no root siblings after its subtree but children allowed
+   |+== intro.md
+     :== api.md
