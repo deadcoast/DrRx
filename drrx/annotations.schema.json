@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/drrx/annotations.schema.json",
+  "title": "Dr.Rx Annotations",
+  "type": "object",
+  "properties": {
+    "state": { "enum": ["present", "absent"] },
+    "source": {
+      "oneOf": [
+        { "const": "inline" },
+        { "type": "string", "pattern": "^template:.+" },
+        { "type": "string", "pattern": "^url:https?://.+" }
+      ]
+    },
+    "mode": { "enum": ["file", "dir"] },
+    "ignore": { "type": "boolean" },
+    "attrs": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+

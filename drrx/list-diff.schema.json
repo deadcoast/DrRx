@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/drrx/list-diff.schema.json",
+  "title": "Dr.Rx List --diff JSON Format",
+  "type": "object",
+  "required": ["target", "entries"],
+  "properties": {
+    "target": { "type": "string", "description": "Absolute or configured root of the target directory." },
+    "drrxFile": { "type": "string", "description": "Path to the Dr.Rx source file used for desired state (optional)." },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Entry" }
+    }
+  },
+  "$defs": {
+    "Entry": {
+      "type": "object",
+      "required": ["path", "kind", "status"],
+      "properties": {
+        "path": { "type": "string" },
+        "kind": { "enum": ["file", "dir"] },
+        "status": { "enum": ["present", "absent", "create", "delete", "change", "unknown"] },
+        "desired": { "$ref": "#/$defs/Desired" },
+        "actual": { "$ref": "#/$defs/Actual" },
+        "diff": { "$ref": "#/$defs/Diff" }
+      },
+      "additionalProperties": false
+    },
+    "Desired": {
+      "type": "object",
+      "properties": {
+        "state": { "enum": ["present", "absent"] },
+        "annotations": { "$ref": "../drrx/annotations.schema.json" }
+      },
+      "additionalProperties": true
+    },
+    "Actual": {
+      "type": "object",
+      "properties": {
+        "exists": { "type": "boolean" },
+        "size": { "type": "integer", "minimum": 0 },
+        "mtime": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "Diff": {
+      "type": "object",
+      "properties": {
+        "changeType": { "enum": ["add", "remove", "modify", "noop"] },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  }
+}
+

@@ -3,107 +3,236 @@
   "$id": "https://example.com/drrx/ast.schema.json",
   "title": "Dr.Rx Abstract Syntax Tree",
   "type": "object",
-  "required": ["version", "root"],
+  "required": [
+    "version",
+    "root"
+  ],
   "properties": {
-    "version": {"type": "string", "pattern": "^\n?\n?.*"},
-    "root": {"$ref": "#/$defs/Root"},
+    "version": {
+      "type": "string",
+      "pattern": "^\n?\n?.*"
+    },
+    "root": {
+      "$ref": "#/$defs/Root"
+    },
     "warnings": {
       "type": "array",
-      "items": {"$ref": "#/$defs/Diagnostic"}
+      "items": {
+        "$ref": "#/$defs/Diagnostic"
+      }
     },
     "errors": {
       "type": "array",
-      "items": {"$ref": "#/$defs/Diagnostic"}
+      "items": {
+        "$ref": "#/$defs/Diagnostic"
+      }
     }
   },
   "$defs": {
     "Root": {
       "type": "object",
-      "required": ["kind", "children"],
+      "required": [
+        "kind",
+        "children"
+      ],
       "properties": {
-        "kind": {"const": "root"},
+        "kind": {
+          "const": "root"
+        },
         "children": {
           "type": "array",
-          "items": {"$ref": "#/$defs/Node"}
+          "items": {
+            "$ref": "#/$defs/Node"
+          }
         }
       },
       "additionalProperties": false
     },
     "Node": {
       "type": "object",
-      "required": ["kind", "name", "depth", "position"],
+      "required": [
+        "kind",
+        "name",
+        "depth",
+        "position"
+      ],
       "properties": {
-        "kind": {"enum": ["dir", "file"]},
-        "name": {"type": "string", "minLength": 1},
-        "depth": {"type": "integer", "minimum": 0},
-        "position": {"$ref": "#/$defs/Position"},
-        "flow": {"$ref": "#/$defs/Flow"},
-        "annotations": {"$ref": "#/$defs/Annotations"},
+        "kind": {
+          "enum": [
+            "dir",
+            "file"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "depth": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "position": {
+          "$ref": "#/$defs/Position"
+        },
+        "flow": {
+          "$ref": "#/$defs/Flow"
+        },
+        "annotations": {
+          "$ref": "#/$defs/Annotations"
+        },
         "children": {
           "type": "array",
-          "items": {"$ref": "#/$defs/Node"}
+          "items": {
+            "$ref": "#/$defs/Node"
+          }
         },
-        "path": {"type": "string", "description": "Computed absolute or root-relative path; optional."}
+        "path": {
+          "type": "string",
+          "description": "Computed absolute or root-relative path; optional."
+        }
       },
       "additionalProperties": false,
       "allOf": [
         {
-          "if": {"properties": {"kind": {"const": "dir"}}},
-          "then": {"required": ["children"], "properties": {"children": {"type": "array"}}}
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "dir"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "children"
+            ],
+            "properties": {
+              "children": {
+                "type": "array"
+              }
+            }
+          }
         },
         {
-          "if": {"properties": {"kind": {"const": "file"}}},
-          "then": {"properties": {"children": false}}
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "file"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "children": false
+            }
+          }
         }
       ]
     },
     "Position": {
       "type": "object",
-      "required": ["line", "column"],
+      "required": [
+        "line",
+        "column"
+      ],
       "properties": {
-        "line": {"type": "integer", "minimum": 1},
-        "column": {"type": "integer", "minimum": 1}
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "column": {
+          "type": "integer",
+          "minimum": 1
+        }
       },
       "additionalProperties": false
     },
     "Flow": {
       "type": "object",
       "properties": {
-        "open": {"type": "boolean", "description": "Line used '+' to open flow for children."},
-        "close": {"type": "boolean", "description": "Line used ':' to close flow (no children)."},
-        "continue": {"type": "boolean", "description": "Line showed '|' to indicate more siblings at this depth."}
+        "open": {
+          "type": "boolean",
+          "description": "Line used '+' to open flow for children."
+        },
+        "close": {
+          "type": "boolean",
+          "description": "Line used ':' to close flow (no children)."
+        },
+        "continue": {
+          "type": "boolean",
+          "description": "Line showed '|' to indicate more siblings at this depth."
+        }
       },
       "additionalProperties": false
     },
     "Annotations": {
       "type": "object",
       "properties": {
-        "state": {"enum": ["present", "absent"]},
-        "source": {
-          "oneOf": [
-            {"const": "inline"},
-            {"type": "string", "pattern": "^template:.+"},
-            {"type": "string", "pattern": "^url:https?://.+"}
+        "state": {
+          "enum": [
+            "present",
+            "absent"
           ]
         },
-        "mode": {"enum": ["file", "dir"]},
-        "ignore": {"type": "boolean"},
-        "attrs": {"type": "string"}
+        "source": {
+          "oneOf": [
+            {
+              "const": "inline"
+            },
+            {
+              "type": "string",
+              "pattern": "^template:.+"
+            },
+            {
+              "type": "string",
+              "pattern": "^url:https?://.+"
+            }
+          ]
+        },
+        "mode": {
+          "enum": [
+            "file",
+            "dir"
+          ]
+        },
+        "ignore": {
+          "type": "boolean"
+        },
+        "attrs": {
+          "type": "string"
+        }
       },
       "additionalProperties": true
     },
     "Diagnostic": {
       "type": "object",
-      "required": ["severity", "code", "message", "position"],
+      "required": [
+        "severity",
+        "code",
+        "message",
+        "position"
+      ],
       "properties": {
-        "severity": {"enum": ["warning", "error"]},
-        "code": {"type": "string"},
-        "message": {"type": "string"},
-        "position": {"$ref": "#/$defs/Position"},
-        "nodePath": {"type": "string", "description": "Optional path of the related node."}
+        "severity": {
+          "enum": [
+            "warning",
+            "error"
+          ]
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "position": {
+          "$ref": "#/$defs/Position"
+        },
+        "nodePath": {
+          "type": "string",
+          "description": "Optional path of the related node."
+        }
       },
       "additionalProperties": false
     }
   }
 }
-

@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "root": {
+    "kind": "root",
+    "children": [
+      {
+        "kind": "file",
+        "name": ".drrx.conf.yaml",
+        "depth": 0,
+        "position": { "line": 3, "column": 1 },
+        "flow": { "open": false, "close": false, "continue": false }
+      },
+      {
+        "kind": "file",
+        "name": "pyproject.toml",
+        "depth": 0,
+        "position": { "line": 4, "column": 1 },
+        "flow": { "open": false, "close": false, "continue": true }
+      },
+      {
+        "kind": "dir",
+        "name": "drrx",
+        "depth": 0,
+        "position": { "line": 6, "column": 2 },
+        "flow": { "open": false, "close": true, "continue": false },
+        "children": [
+          {
+            "kind": "dir",
+            "name": "src",
+            "depth": 1,
+            "position": { "line": 7, "column": 4 },
+            "flow": { "open": false, "close": true, "continue": false },
+            "children": [
+              {
+                "kind": "dir",
+                "name": "python",
+                "depth": 2,
+                "position": { "line": 8, "column": 6 },
+                "flow": { "open": true, "close": false, "continue": false },
+                "children": [
+                  {
+                    "kind": "file",
+                    "name": "main.py",
+                    "depth": 3,
+                    "position": { "line": 9, "column": 8 },
+                    "flow": { "open": true, "close": false, "continue": false }
+                  },
+                  {
+                    "kind": "file",
+                    "name": "drrx-dict.json",
+                    "depth": 4,
+                    "position": { "line": 11, "column": 10 },
+                    "flow": { "open": false, "close": true, "continue": false }
+                  },
+                  {
+                    "kind": "dir",
+                    "name": "modules",
+                    "depth": 3,
+                    "position": { "line": 13, "column": 8 },
+                    "flow": { "open": true, "close": false, "continue": false },
+                    "children": [
+                      {
+                        "kind": "file",
+                        "name": "cli_example.py",
+                        "depth": 4,
+                        "position": { "line": 14, "column": 10 },
+                        "flow": { "open": false, "close": false, "continue": true }
+                      },
+                      {
+                        "kind": "file",
+                        "name": "commands.py",
+                        "depth": 4,
+                        "position": { "line": 15, "column": 10 },
+                        "flow": { "open": false, "close": true, "continue": false }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "dir",
+        "name": "udl",
+        "depth": 0,
+        "position": { "line": 17, "column": 2 },
+        "flow": { "open": true, "close": false, "continue": false },
+        "children": [
+          {
+            "kind": "dir",
+            "name": "directory",
+            "depth": 1,
+            "position": { "line": 18, "column": 4 },
+            "flow": { "open": true, "close": false, "continue": false },
+            "children": [
+              {
+                "kind": "file",
+                "name": "DirectoryExampleOne.drrx",
+                "depth": 2,
+                "position": { "line": 19, "column": 6 },
+                "flow": { "open": false, "close": false, "continue": true }
+              },
+              {
+                "kind": "file",
+                "name": "DirectoryExampleTwo.drrx",
+                "depth": 2,
+                "position": { "line": 20, "column": 6 },
+                "flow": { "open": false, "close": true, "continue": false }
+              }
+            ]
+          },
+          {
+            "kind": "dir",
+            "name": "file",
+            "depth": 1,
+            "position": { "line": 22, "column": 4 },
+            "flow": { "open": true, "close": false, "continue": false },
+            "children": [
+              {
+                "kind": "file",
+                "name": "exampleFile.drrx",
+                "depth": 2,
+                "position": { "line": 23, "column": 6 },
+                "flow": { "open": false, "close": false, "continue": true }
+              },
+              {
+                "kind": "file",
+                "name": "exampleFileTwo.drrx",
+                "depth": 2,
+                "position": { "line": 24, "column": 6 },
+                "flow": { "open": false, "close": true, "continue": false }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "warnings": [],
+  "errors": []
+}
+

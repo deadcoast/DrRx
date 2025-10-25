@@ -33,8 +33,8 @@ directory_remedy:
           - name: "--help <command>"
             description: "Displays help information for a command"
       - name: "list"
-        description: "List effective desired state (from Dr.Rx) and/or actual FS contents; can show diff."
-        example: 'drrx list --file C:\\path\\tree.drrx --dir C:\\target --diff'
+        description: "List effective desired state (from Dr.Rx) and/or actual FS contents; can show diff. Supports --json output (see drrx/list-diff.schema.json)."
+        example: 'drrx list --file C:\\path\\tree.drrx --dir C:\\target --diff --json'
         options:
           - name: "--file <file>"
             description: "Optional Dr.Rx file to compute desired state."
@@ -43,7 +43,7 @@ directory_remedy:
           - name: "--diff"
             description: "Show diff between desired and actual: add/change/delete."
           - name: "--json"
-            description: "Emit machine-readable JSON of listing/diff."
+            description: "Emit machine-readable JSON of listing/diff conforming to drrx/list-diff.schema.json."
       - name: "restore"
         description: "Re-apply the most recent snapshot or the provided Dr.Rx file to reconcile target to desired state. Honors { state: absent } by removing nodes."
         example: 'drrx restore --dir C:\\target --snapshot .drrx.last.json'

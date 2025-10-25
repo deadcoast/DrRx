@@ -11,7 +11,7 @@ Rule format:
 
 Index
 - SP — Indentation & Alignment: [SP.01](#SP.01), [SP.02](#SP.02), [SP.03](#SP.03), [SP.04](#SP.04)
-- FW — Flow Markers: [FW.01](#FW.01), [FW.02](#FW.02), [FW.03](#FW.03), [FW.04](#FW.04), [FW.05](#FW.05)
+ - FW — Flow Markers: [FW.01](#FW.01), [FW.02](#FW.02), [FW.03](#FW.03), [FW.04](#FW.04), [FW.05](#FW.05), [FW.06](#FW.06), [FW.07](#FW.07), [FW.08](#FW.08), [FW.09](#FW.09), [FW.10](#FW.10), [FW.11](#FW.11)
 - RT/DR/FI — Core Operators: [RT.01](#RT.01), [DR.01](#DR.01), [FI.01](#FI.01)
 - NM/WN — Names & Windows: [NM.01](#NM.01), [NM.02](#NM.02), [NM.03](#NM.03), [NM.04](#NM.04), [WN.01](#WN.01)
 - CM — Comments: [CM.01](#CM.01), [CM.02](#CM.02)
@@ -19,6 +19,7 @@ Index
 - VL — Validation: [VL.01](#VL.01), [VL.02](#VL.02), [VL.03](#VL.03)
 - EX — Execution: [EX.01](#EX.01), [EX.02](#EX.02), [EX.03](#EX.03), [EX.04](#EX.04)
 - OR — Ordering & Grouping: [OR.01](#OR.01), [OR.02](#OR.02), [OR.03](#OR.03), [OR.04](#OR.04)
+ - SF — Source File: [SF.01](#SF.01), [SF.02](#SF.02)
 
 ---
 
@@ -95,8 +96,8 @@ Index
 [FW.06] File→Directory spacer bar (MUST)
 - Summary: When a file at depth N is followed by a directory sibling at the same depth, insert a standalone `|` line at depth N to visually separate the file block from the upcoming directory block.
 - Details: The spacer line contains only the properly aligned `|` (vein) and optional comment; it is semantically neutral (does not alter the tree) and improves scanability.
-- Violations: Style violation; record a warning and tools MAY auto-insert during formatting.
-- References: syntax-overview.md §3 (File–Directory spacer) and examples in “08-reference/09-test-and-quality”.
+- Violations: Hard error if the spacer is missing when a file is immediately followed by a directory at the same depth. Formatters MAY auto-insert; linters MUST report.
+- References: [syntax-overview.md §3 Flow and Indentation Rules](syntax-overview.md#3-flow-and-indentation-rules), [Conformance Examples](syntax-overview.md#10-conformance-examples).
 
 <a id="FW.07"></a>
 [FW.07] Exactly one branch marker per line (MUST)
@@ -117,7 +118,7 @@ Index
 - Summary: A directory declared with `+` SHOULD be followed by at least one child line at greater depth.
 - Details: If none is present, emit a warning for dangling open branch.
 - Violations: Warning (see [VL.04](#VL.04)).
-- References: syntax-overview.md §3.
+- References: [syntax-overview.md §3 Flow and Indentation Rules](syntax-overview.md#3-flow-and-indentation-rules).
 
 <a id="FW.10"></a>
 [FW.10] Files never have children (MUST)
@@ -197,6 +198,13 @@ Index
 - Violations: Warning or error based on strictness.
 - References: syntax-overview.md §4.
 
+<a id="WN.02"></a>
+[WN.02] Long paths and extended-length prefix (SHOULD)
+- Summary: Implementations SHOULD support Windows extended-length paths via `\\\\?\\` to exceed MAX_PATH where the environment permits.
+- Details: Authors SHOULD avoid designs that exceed 260 characters unless long paths are enabled; tools MAY warn when projected paths exceed limits.
+- Violations: Warning; executor MAY fail at runtime if environment disallows long paths.
+- References: syntax-overview.md §4 (Path length note).
+
 ---
 
 ## CM — Comments
@@ -232,6 +240,20 @@ Index
 - Details: `state: present|absent`; `source: inline|template:<id>|url:https://...`.
 - Violations: None (tooling-specific).
 - References: syntax-overview.md §6; drrx.yaml semantics.
+
+<a id="AN.03"></a>
+[AN.03] Mode override semantics (MUST)
+- Summary: When `mode: file|dir` is present, the declared kind MUST override implicit detection.
+- Details: Use sparingly; intended for edge cases. Executors MUST treat mismatched declarations as an error if the FS state conflicts under strict mode.
+- Violations: Hard error in strict mode; warning otherwise.
+- References: syntax-overview.md §6.
+
+<a id="AN.04"></a>
+[AN.04] Ignore semantics (MUST)
+- Summary: When `ignore: true` is present, the executor MUST NOT modify the corresponding FS node or its subtree during apply/restore.
+- Details: Parsers still include the node in the AST; diff tools SHOULD display it as ignored.
+- Violations: Warning if the executor would otherwise mutate; operations should be skipped.
+- References: syntax-overview.md §6.
 
 ---
 
@@ -273,11 +295,11 @@ Index
 - References: syntax-overview.md §3 (spacer behavior).
 
 <a id="VL.06"></a>
-[VL.06] Grouping violations (SHOULD)
-- Summary: When repository policy requires grouping files before directories (see [OR.02](#OR.02)), interleaving SHOULD be flagged.
-- Details: Aids readability and consistent review diffs.
-- Violations: Warning.
-- References: syntax-overview.md examples with file→spacer→dir.
+[VL.06] Grouping violations (MUST)
+- Summary: Interleaving files and directories within a block violates [OR.02](#OR.02).
+- Details: Files MUST be contiguous and precede directories, separated by a required spacer `|` line.
+- Violations: Hard error.
+- References: [syntax-overview.md Conformance Examples](syntax-overview.md#10-conformance-examples).
 
 ---
 
@@ -311,6 +333,13 @@ Index
 - Violations: Error if side effects occur during dry-run.
 - References: drrx.yaml `--dry-run`, `--snapshot`.
 
+<a id="EX.05"></a>
+[EX.05] File contents sourcing and defaults (SHOULD)
+- Summary: Without a `source` annotation, executors SHOULD leave existing file contents unchanged; when creating a new file without `source`, create an empty file.
+- Details: With `source`, executors SHOULD materialize contents from `inline`, `template:<id>`, or `url:` as configured.
+- Violations: Warning if contents differ unexpectedly in strict content modes; otherwise informational.
+- References: syntax-overview.md §9 (Execution Semantics: Files).
+
 ---
 
 ## OR — Ordering & Grouping
@@ -323,11 +352,11 @@ Index
 - References: syntax-overview.md top example.
 
 <a id="OR.02"></a>
-[OR.02] Files before directories within a block (SHOULD)
+[OR.02] Files before directories within a block (MUST)
 - Summary: Within any directory’s children, list file nodes first, then insert a spacer `|` line, then list directory nodes.
-- Details: Enhances scanability and keeps sibling types grouped.
-- Violations: Warning (see [VL.06](#VL.06)).
-- References: syntax-overview.md examples (08-reference/09-test-and-quality).
+- Details: Enhances scanability and keeps sibling types grouped; this ordering is required for conformance.
+- Violations: Hard error (see [VL.06](#VL.06)).
+- References: [syntax-overview.md Conformance Examples](syntax-overview.md#10-conformance-examples).
 
 <a id="OR.03"></a>
 [OR.03] Stable ordering among files/dirs (SHOULD)
@@ -342,6 +371,24 @@ Index
 - Details: Avoids ambiguous reading and matches implementation assumptions.
 - Violations: Hard error in strict mode; warning otherwise.
 - References: syntax-overview.md top example.
+
+---
+
+## SF — Source File
+
+<a id="SF.01"></a>
+[SF.01] Encoding and line endings (MUST)
+- Summary: Source files MUST be UTF-8 encoded; both CRLF and LF line endings are accepted and normalized during parsing.
+- Details: Mixed line endings SHOULD be normalized; BOM is discouraged.
+- Violations: Warning if non-UTF-8 or mixed endings detected; error in strict mode.
+- References: syntax-overview.md §1 Source File Structure.
+
+<a id="SF.02"></a>
+[SF.02] Inline comments and blanks (MUST)
+- Summary: Inline comments beginning with `#` (outside quoted names) and blank lines MAY appear anywhere and MUST NOT affect structure.
+- Details: Comments extend to end-of-line; trailing spaces are ignored (see [CM.02](#CM.02)).
+- Violations: None.
+- References: syntax-overview.md §1, §5.
 
 References
 - Full syntax and grammar: `drrx/syntax-overview.md`

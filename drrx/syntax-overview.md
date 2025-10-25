@@ -14,9 +14,9 @@ FLOW OPERATORS (see [FW.*](rules.md#FW.01)):
 - `+`: open_vein — Opens/continues flow from the current node so children may follow. Paired with `|` on subsequent lines under the same column.
 - `:`: close_vein — Closes flow from the current node so no further children follow under that branch.
   - Grouping convention: within a directory, list files first, insert a spacer `|` line, then list subdirectories (see [OR.02](rules.md#OR.02)).
- - File→Directory spacer — After a file at depth N, when a directory sibling follows at the same depth, insert a standalone `|` line at depth N to visually separate groups (see [FW.06](rules.md#FW.06)).
+  - File→Directory spacer — After a file at depth N, when a directory sibling follows at the same depth, insert a standalone `|` line at depth N to visually separate groups (see [FW.06](rules.md#FW.06)).
 
-OTHER TOKENS (see [NM.*](rules.md#NM.01), [CM.*](rules.md#CM.01)):
+OTHER TOKENS (see [NM.*](rules.md#NM.01), [WN.02](rules.md#WN.02), [CM.*](rules.md#CM.01)):
 
 - `#`: comment — Begins an inline comment; parser ignores from `#` to end-of-line when not inside a quoted name.
 - `"..."`: quoted_name — Allows spaces and special characters in names. Use `\"` to escape quotes inside.
@@ -197,7 +197,7 @@ Parsing heuristic (robust mode):
 - Unquoted names may include: letters, digits, `_`, `-`, `.`, and no spaces.
 - Quoted names `"..."` may include spaces and any character except `"` unless escaped as `\"`.
 - Prohibited names (Windows): `CON`, `PRN`, `AUX`, `NUL`, `COM1`..`COM9`, `LPT1`..`LPT9` (case-insensitive) and names ending with `.` or space.
-- Path length: support extended-length paths via `\\?\` internally; authors should avoid designs that exceed 260 characters unless the runtime enables long paths.
+ - Path length: support extended-length paths via `\\?\` internally; authors should avoid designs that exceed 260 characters unless the runtime enables long paths (see [WN.02](rules.md#WN.02)).
 - Case: Windows file system comparisons are case-insensitive by default; semantic matching should be case-insensitive unless configured otherwise.
 
 ### 5. Comments and Whitespace
@@ -339,7 +339,7 @@ File→Directory spacer lines within a section:
 - Comments: `#...` to end-of-line.
 - Annotations: brace blocks `{...}` with key/value highlighting.
 - Errors: flag tabs, unknown tokens, and misaligned `|` vs indentation.
- - Spacer lines: allow standalone `|` lines as a distinct scope to improve readability.
+- Spacer lines: allow standalone `|` lines as a distinct scope to improve readability.
 
 ### 12. Reserved and Future Extensions
 
