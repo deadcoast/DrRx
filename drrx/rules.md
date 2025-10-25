@@ -18,6 +18,7 @@ Index
 - AN — Annotations: [AN.01](#AN.01), [AN.02](#AN.02)
 - VL — Validation: [VL.01](#VL.01), [VL.02](#VL.02), [VL.03](#VL.03)
 - EX — Execution: [EX.01](#EX.01), [EX.02](#EX.02), [EX.03](#EX.03), [EX.04](#EX.04)
+- OR — Ordering & Grouping: [OR.01](#OR.01), [OR.02](#OR.02), [OR.03](#OR.03), [OR.04](#OR.04)
 
 ---
 
@@ -89,6 +90,48 @@ Index
 - Details: This mirrors the examples and Windows tree style for readability.
 - Violations: Warning only.
 - References: syntax-overview.md examples (DrRx Tree Syntax sample).
+
+<a id="FW.06"></a>
+[FW.06] File→Directory spacer bar (MUST)
+- Summary: When a file at depth N is followed by a directory sibling at the same depth, insert a standalone `|` line at depth N to visually separate the file block from the upcoming directory block.
+- Details: The spacer line contains only the properly aligned `|` (vein) and optional comment; it is semantically neutral (does not alter the tree) and improves scanability.
+- Violations: Style violation; record a warning and tools MAY auto-insert during formatting.
+- References: syntax-overview.md §3 (File–Directory spacer) and examples in “08-reference/09-test-and-quality”.
+
+<a id="FW.07"></a>
+[FW.07] Exactly one branch marker per line (MUST)
+- Summary: A line’s flow prefix MAY contain either `+` or `:` (mutually exclusive), optionally followed by `|` if siblings remain; multiple `+`/`:` markers on the same line are invalid.
+- Details: The order is `[+|:]? '|'?` in the flow prefix; anything else is an error.
+- Violations: Hard error.
+- References: syntax-overview.md §2 Line Forms.
+
+<a id="FW.08"></a>
+[FW.08] Closed directory has no children (MUST)
+- Summary: A directory declared with `:` MUST NOT have children.
+- Details: If children are present at greater depth after a `:` directory line, this is invalid structure.
+- Violations: Hard error.
+- References: syntax-overview.md §3.
+
+<a id="FW.09"></a>
+[FW.09] Open directory must have children (SHOULD)
+- Summary: A directory declared with `+` SHOULD be followed by at least one child line at greater depth.
+- Details: If none is present, emit a warning for dangling open branch.
+- Violations: Warning (see [VL.04](#VL.04)).
+- References: syntax-overview.md §3.
+
+<a id="FW.10"></a>
+[FW.10] Files never have children (MUST)
+- Summary: No node may appear at a greater depth as a child of a file.
+- Details: `+` or `:` before a file indicates sibling continuity only; it does not imply children.
+- Violations: Hard error if any node appears at depth N+1 directly under a file.
+- References: syntax-overview.md §2, §3.
+
+<a id="FW.11"></a>
+[FW.11] Root-level continuity (SHOULD)
+- Summary: At root depth, use `|` to indicate remaining root-level siblings; omit on last root item.
+- Details: Mirrors the style used in examples to aid scanability.
+- Violations: Warning at most.
+- References: syntax-overview.md examples at top-level.
 
 ---
 
@@ -215,6 +258,27 @@ Index
 - Violations: Warning; do not reflow tree.
 - References: syntax-overview.md §3, §8.
 
+<a id="VL.04"></a>
+[VL.04] Dangling branch markers (SHOULD)
+- Summary: A `+` with no deeper child or a `:` followed by deeper children MUST be flagged.
+- Details: `+` without child is a warning; `:` with child is a hard error (see [FW.08](#FW.08)).
+- Violations: Warning/Error as above.
+- References: syntax-overview.md §3.
+
+<a id="VL.05"></a>
+[VL.05] Orphan spacer lines (SHOULD)
+- Summary: A spacer `|` line with no subsequent directory sibling at the same depth SHOULD be flagged.
+- Details: Allows formatters to clean up unnecessary spacers.
+- Violations: Warning.
+- References: syntax-overview.md §3 (spacer behavior).
+
+<a id="VL.06"></a>
+[VL.06] Grouping violations (SHOULD)
+- Summary: When repository policy requires grouping files before directories (see [OR.02](#OR.02)), interleaving SHOULD be flagged.
+- Details: Aids readability and consistent review diffs.
+- Violations: Warning.
+- References: syntax-overview.md examples with file→spacer→dir.
+
 ---
 
 ## EX — Execution
@@ -248,6 +312,36 @@ Index
 - References: drrx.yaml `--dry-run`, `--snapshot`.
 
 ---
+
+## OR — Ordering & Grouping
+
+<a id="OR.01"></a>
+[OR.01] Root files before directories (MUST)
+- Summary: Files at root depth MUST appear before any directories and be contiguous after the root `.` line.
+- Details: Matches examples where root config files lead before project folders.
+- Violations: Warning or error depending on strictness.
+- References: syntax-overview.md top example.
+
+<a id="OR.02"></a>
+[OR.02] Files before directories within a block (SHOULD)
+- Summary: Within any directory’s children, list file nodes first, then insert a spacer `|` line, then list directory nodes.
+- Details: Enhances scanability and keeps sibling types grouped.
+- Violations: Warning (see [VL.06](#VL.06)).
+- References: syntax-overview.md examples (08-reference/09-test-and-quality).
+
+<a id="OR.03"></a>
+[OR.03] Stable ordering among files/dirs (SHOULD)
+- Summary: Maintain a stable sort order for files (e.g., lexicographic) and directories within their groups.
+- Details: Tooling MAY auto-sort in format mode.
+- Violations: None; policy-dependent warning.
+- References: syntax-overview.md examples imply alphabetical order.
+
+<a id="OR.04"></a>
+[OR.04] Contiguous root files block (MUST)
+- Summary: Root-level files MUST be a single contiguous block directly under the root before any spacer or directory entries.
+- Details: Avoids ambiguous reading and matches implementation assumptions.
+- Violations: Hard error in strict mode; warning otherwise.
+- References: syntax-overview.md top example.
 
 References
 - Full syntax and grammar: `drrx/syntax-overview.md`

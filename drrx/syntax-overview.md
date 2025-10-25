@@ -2,19 +2,21 @@
 
 ## DICTIONARY
 
-STRUCTURE OPERATORS:
+STRUCTURE OPERATORS (see [RT.01](rules.md#RT.01), [DR.01](rules.md#DR.01), [FI.01](rules.md#FI.01)):
 
 - `.`: root_directory — Indicates the root directory of the managed tree. Must be the first non-empty, non-comment line.
 - `--`: directory — Declares a directory node. The token is followed by a space and a directory name, optionally ending with `/` for readability.
 - `==`: file — Declares a file node. The token is followed by a space and a file name.
 
-FLOW OPERATORS:
+FLOW OPERATORS (see [FW.*](rules.md#FW.01)):
 
 - `|`: vein — Draws a vertical continuation line to connect siblings/children. Required wherever a parent’s flow remains open.
 - `+`: open_vein — Opens/continues flow from the current node so children may follow. Paired with `|` on subsequent lines under the same column.
 - `:`: close_vein — Closes flow from the current node so no further children follow under that branch.
+  - Grouping convention: within a directory, list files first, insert a spacer `|` line, then list subdirectories (see [OR.02](rules.md#OR.02)).
+ - File→Directory spacer — After a file at depth N, when a directory sibling follows at the same depth, insert a standalone `|` line at depth N to visually separate groups (see [FW.06](rules.md#FW.06)).
 
-OTHER TOKENS:
+OTHER TOKENS (see [NM.*](rules.md#NM.01), [CM.*](rules.md#CM.01)):
 
 - `#`: comment — Begins an inline comment; parser ignores from `#` to end-of-line when not inside a quoted name.
 - `"..."`: quoted_name — Allows spaces and special characters in names. Use `\"` to escape quotes inside.
@@ -109,6 +111,22 @@ Minimal examples:
 
 [FW.02] - The Vein flow operator is always `|`. It MUST appear on any line where a sibling follows later at the same depth.
 
+- File→Directory spacer (see [FW.06](rules.md#FW.06)):
+  - After a file at depth N, when a directory sibling follows at the same depth, insert a standalone `|` line at depth N to visually separate files from directories. This spacer is semantically neutral and improves readability.
+  - Example:
+
+    ```drrx
+    | :-- mockup-directory/
+    |   | :== pyproject.toml
+    |   |
+    |   :-- src/
+    |     :== mockup-directory.drrx
+    |     |
+    |     :-- python/
+    |       | :== main.py
+    |       |
+    ```
+
 #### ROOT OPERATOR
 
 [RT.01] - The root directory indicator is always `.`
@@ -153,6 +171,9 @@ Where:
 - Continuing flow (`|`):
   - Use `|` on any line at a given depth if there remains at least one more sibling later at that depth.
   - Omit `|` if the current line is the last at its depth and no further siblings will appear.
+- File→Directory spacer (`|`):
+  - When a file at depth N is followed by a directory sibling at depth N, insert a dedicated spacer line consisting only of a properly indented `|` to separate file and directory blocks (see [FW.06](rules.md#FW.06)).
+  - The spacer line is semantically neutral; parsers MUST accept and ignore it structurally.
 - Closing flow (`:`):
   - Use `:` instead of `+` before an operator to signal that no children will follow for the current branch after this line.
   - `:` on a directory line means the directory has no children defined. On a file line, it simply indicates no further continuation at that branch.
@@ -207,26 +228,28 @@ Examples:
 ### 7. Formal Grammar (EBNF-ish)
 
 ```
-file        := ws* root_line (nl line | nl)*
-root_line   := '.' ws* comment?
-line        := (dir_line | file_line | comment_only | empty)
-dir_line    := flow_prefix ws* '--' ws+ name slash_opt? ws* annotations? ws* comment?
-file_line   := flow_prefix ws* '==' ws+ name ws* annotations? ws* comment?
-flow_prefix := indent (('+'|':') ws*)? ('|' ws*)?
-indent      := (two_sp)*           # two spaces per depth; tabs invalid
-name        := quoted | unquoted
-quoted      := '"' ( [^"\\] | '\\' . )* '"'
-unquoted    := [A-Za-z0-9._-]+     # no spaces or '#' or operator starts
-slash_opt   := '/'?
-annotations := '{' (key ':' value (';' key ':' value)*)? '}'
-key         := unquoted
-value       := quoted | unquoted
-comment     := '#' [^\n\r]*
-empty       := ws*                 # blank line
-comment_only:= ws* comment
-ws          := ' '
-two_sp      := '  '
-nl          := ('\n' | '\r\n')
+file          := ws* root_line (nl line | nl)*
+root_line     := '.' ws* comment?
+line          := (dir_line | file_line | flow_spacer | comment_only | empty)
+dir_line      := flow_prefix ws* '--' ws+ name slash_opt? ws* annotations? ws* comment?
+file_line     := flow_prefix ws* '==' ws+ name ws* annotations? ws* comment?
+flow_spacer   := spacer_prefix ws* comment?    # standalone vein line (see FW.06)
+spacer_prefix := indent '|'                   
+flow_prefix   := indent (('+'|':') ws*)? ('|' ws*)?
+indent        := (two_sp)*           # two spaces per depth; tabs invalid
+name          := quoted | unquoted
+quoted        := '"' ( [^"\\] | '\\' . )* '"'
+unquoted      := [A-Za-z0-9._-]+     # no spaces or '#' or operator starts
+slash_opt     := '/'?
+annotations   := '{' (key ':' value (';' key ':' value)*)? '}'
+key           := unquoted
+value         := quoted | unquoted
+comment       := '#' [^\n\r]*
+empty         := ws*                 # blank line
+comment_only  := ws* comment
+ws            := ' '
+two_sp        := '  '
+nl            := ('\n' | '\r\n')
 ```
 
 ### 8. Validation Rules and Errors
@@ -292,6 +315,23 @@ No-children directory, last at depth:
 :-- dist/           # no `|` because `dist/` is last at depth 0
 ```
 
+File→Directory spacer lines within a section:
+
+```drrx
+| +-- 08-reference/
+| | +== ast-json-schema.md 
+| | +== drrx-conf-schema.md
+| | +== error-catalog.md
+| | :== logging-format.md
+| |
+| +-- 09-test-and-quality/
+| | +== conformance-suite.md
+| | +== coverage-strategy.md
+| | +== fixtures-and-golden-tests.md
+| | :== perf-baselines.md
+| |
+```
+
 ### 11. UDL/Lexing Hints (for Editors)
 
 - Operators: `.` `--` `==` `+` `:` `|` — distinct scopes for coloring.
@@ -299,6 +339,7 @@ No-children directory, last at depth:
 - Comments: `#...` to end-of-line.
 - Annotations: brace blocks `{...}` with key/value highlighting.
 - Errors: flag tabs, unknown tokens, and misaligned `|` vs indentation.
+ - Spacer lines: allow standalone `|` lines as a distinct scope to improve readability.
 
 ### 12. Reserved and Future Extensions
 
@@ -323,13 +364,14 @@ No-children directory, last at depth:
   - Parse name: quoted or unquoted; handle escapes (`\"`).
   - Optional `/` after dir name is cosmetic.
   - Parse optional annotations `{ key: value; ... }`.
+  - Standalone `|` (flow spacer) lines: recognize and skip; they do not yield nodes.
 - Build tree
   - Maintain a stack by depth; attach current node as child of last node at depth-1.
   - On decreased depth, pop stack until parent depth matches.
   - Validate duplicate sibling names (case-insensitive on Windows).
 - Validate
   - Hard errors: tabs, missing name, unbalanced quotes, unknown operator, duplicate sibling.
-  - Warnings: flow/indent mismatch; reserved names; inconsistent trailing `/`.
+  - Warnings: flow/indent mismatch; reserved names; inconsistent trailing `/`; dangling `+` with no children; orphan spacer `|` with no following directory at depth; grouping violations when files/dirs interleave.
 - Emit AST (see `drrx/ast.schema.json`)
   - Include node kind, name, depth, position, flow flags, annotations, children.
   - Optionally compute `path` per node.
