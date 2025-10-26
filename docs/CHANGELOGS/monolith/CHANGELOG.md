@@ -9,6 +9,7 @@ Changes are labelled numerically by their order of integration.
 4. Refreshed fixture and README docs: catalogued fixtures by rule focus and described VS Code highlighter installation/settings/quick-fixes.
 5. Extended VS Code quick-fixes to re-run linting, added VL.02 removal for stray continuity bars, and wired CI to package/upload the VSIX on `v*` tags.
 6. Replaced external `npx ajv` schema checks with the internal `scripts/validate-schema.js`, updating npm scripts, Makefile, and schema README guidance.
+7. CLI documentation alignment: README, DEVPLAN, and `drrx/drrx.yaml` now state that only the lint command is implemented while reconciliation commands remain planned.
 
 ## 0.2.0
 CHANGELOG.md revision 0.2.8 and started integrating those items toward complete, workable solutions in VS Code only.

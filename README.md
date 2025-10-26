@@ -71,16 +71,13 @@ This example demonstrates:
 - Validation applies strict rules (see `drrx/rules.md`) and produces diagnostics for editors.
 - The executor reconciles a target directory to the desired state (present/absent), honoring annotations (e.g., `source`, `ignore`).
 
-## Using the CLI (optional)
+## Using the CLI (current)
 
-- Inject (apply declaration to FS):
-  - `drrx inject --file C:\\path\\tree.drrx --dir C:\\target --dry-run`
-- List & diff:
-  - `drrx list --file C:\\path\\tree.drrx --dir C:\\target --diff --json`
-- Restore from snapshot:
-  - `drrx restore --dir C:\\target --snapshot .drrx.last.json`
+- Lint `.drrx` files:
+  - `drrx path/to/spec.tree.drrx`
+  - emits JSON diagnostics (rule, message, line, column, severity, link).
 
-See `drrx/drrx.yaml` for full command and option semantics.
+> Planned reconciliation commands (`inject`, `list`, `restore`, etc.) are outlined in `drrx/drrx.yaml` and the dev plan but are not implemented yet. The CLI currently focuses on linting while the reconciler pipeline is designed and tested.
 
 ## Highlighter Support (VS Code)
 

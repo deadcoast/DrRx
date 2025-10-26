@@ -73,7 +73,7 @@ name: “directory remedy”, “DrRx”, and “drrx”.
   * Flow: `+` opens a vein (new branch), `:` closes flow, `|` carries the vein vertically between parent/children.
   * Layout rules: Double-space for hierarchical steps; when a vein is open (`+`), child alignment can use one space. New lines must align to the terminal character of the prior operator as shown in examples. Root files appear first; then directories; veins explicitly connect files/directories.
 * Authoring intent: Human-readable, strict, unambiguous tree that can be parsed to create/update the real filesystem exactly as declared.
-* CLI intent ("drrx" / "drrxm"): Treat the DrRx spec as the source of truth and provide commands to:
+* CLI intent ("drrx" / "drrxm"): Treat the DrRx spec as the source of truth. **Only the lint command is implemented today; reconciliation commands remain in design.** Provide commands to:
   * commands:
     * inject (initialize/apply spec to target dir; supports `--file`, `--dir`, `--all`, `--force`, `--dry-run`)
     * list / ls, restore, del/deldir/delall, adddir, addfile

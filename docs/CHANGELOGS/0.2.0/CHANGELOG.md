@@ -17,6 +17,8 @@ Changes are labelled numerically by their order of integration.
    - Added a VL.02 quick fix to remove stray continuity bars when no sibling remains at the depth.
 6. Schema validation workflow
    - Replaced `npx ajv` commands with `scripts/validate-schema.js`, updating npm scripts, Makefile targets, and schema README instructions.
+7. CLI documentation alignment
+   - README, DEVPLAN, and `drrx/drrx.yaml` now clarify that only the lint command ships today; reconciliation commands stay on the roadmap.
 
 ## 0.2.0
 

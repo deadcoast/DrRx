@@ -16,6 +16,8 @@ Changes are labelled numerically by their order of integration.
    - Added a VL.02 quick fix to remove stray continuity bars when no sibling follows.
 6. Schema validation workflow
    - Replaced external `npx ajv` calls with an in-repo validator (`scripts/validate-schema.js`), updating npm scripts, Makefile targets, and schema docs.
+7. CLI documentation alignment
+   - README, DEVPLAN, and `drrx/drrx.yaml` now note that only the lint command is implemented; reconciliation commands remain planned.
 
 ## 0.2.0
 CHANGELOG.md revision 0.2.8 and started integrating those items toward complete, workable solutions in VS Code only.
