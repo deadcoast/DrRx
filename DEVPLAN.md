@@ -86,8 +86,8 @@ name: “directory remedy”, “DrRx”, and “drrx”.
 * Operating model: Deterministic reconciliation between the DrRx spec and the target directory, with dry-run and logging/auditing.
 
 ## Related Documentation
-* [Phase 2 - Implementation Details](docs/DEVPLAN/phase_2.md)
-* [Phase 3 - Documentation Suite Plan](docs/DEVPLAN/phase_3.md)
+* [Phase 2 - Implementation Details](docs/DEVPLAN/0.0.2.md)
+* [Phase 3 - Documentation Suite Plan](docs/DEVPLAN/0.0.3.md)
 * [UDL Overview](../01-concepts/udl-overview.md)
 * [Mental Model](../01-concepts/mental-model.md)
 * [What is DrRx](../01-concepts/what-is-drrx.md)
@@ -340,8 +340,8 @@ name: “directory remedy”, “DrRx”, and “drrx”.
   * Initial ADRs (choose `|` as vein connector, Windows-first)
 
 ## Related Documentation
-* [Phase 1 - Core Concepts](docs/DEVPLAN/phase_1.md)
-* [Phase 3 - Documentation Suite Plan](docs/DEVPLAN/phase_3.md)
+* [Phase 1 - Core Concepts](docs/DEVPLAN/0.0.1.md)
+* [Phase 3 - Documentation Suite Plan](docs/DEVPLAN/0.0.3.md)
 
 ## 0) Goals & Audiences
 
@@ -1003,8 +1003,8 @@ docs/
 6. Add 10-project/versioning-and-changelog.md + security-model.md
 
 ## Related Documentation
-* [Phase 1 - Core Concepts](docs/DEVPLAN/phase_1.md)
-* [Phase 2 - Implementation Details](docs/DEVPLAN/phase_2.md)
+* [Phase 1 - Core Concepts](docs/DEVPLAN/0.0.1.md)
+* [Phase 2 - Implementation Details](docs/DEVPLAN/0.0.2.md)
 
 * Quickstart: install + “first inject” with minimal `.drrx`, dry-run → apply → verify → rollback.
 * UDL Spec core: dictionary, spacing/alignment pass/fail, formal EBNF grammar with semantics notes.
