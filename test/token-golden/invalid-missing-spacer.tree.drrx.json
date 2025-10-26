@@ -1,0 +1,193 @@
+[
+  {
+    "line": 1,
+    "raw": ".                         # root",
+    "tokens": [
+      {
+        "kind": "root",
+        "start": 0,
+        "end": 1,
+        "text": "."
+      },
+      {
+        "kind": "comment",
+        "start": 26,
+        "end": 32,
+        "text": "# root"
+      }
+    ]
+  },
+  {
+    "line": 2,
+    "raw": "+== README.md             # file block",
+    "tokens": [
+      {
+        "kind": "flow.open",
+        "start": 0,
+        "end": 1,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 1,
+        "end": 3,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 3,
+        "end": 4,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 4,
+        "end": 13,
+        "text": "README.md"
+      },
+      {
+        "kind": "name.gap",
+        "start": 13,
+        "end": 26,
+        "text": "             "
+      },
+      {
+        "kind": "comment",
+        "start": 26,
+        "end": 38,
+        "text": "# file block"
+      }
+    ]
+  },
+  {
+    "line": 3,
+    "raw": "+-- src/                  # EXPECTED ERROR: FW.06 missing spacer before directory",
+    "tokens": [
+      {
+        "kind": "flow.open",
+        "start": 0,
+        "end": 1,
+        "text": "+"
+      },
+      {
+        "kind": "operator.dir",
+        "start": 1,
+        "end": 3,
+        "text": "--"
+      },
+      {
+        "kind": "operator.space",
+        "start": 3,
+        "end": 4,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 4,
+        "end": 8,
+        "text": "src/"
+      },
+      {
+        "kind": "name.gap",
+        "start": 8,
+        "end": 26,
+        "text": "                  "
+      },
+      {
+        "kind": "comment",
+        "start": 26,
+        "end": 81,
+        "text": "# EXPECTED ERROR: FW.06 missing spacer before directory"
+      }
+    ]
+  },
+  {
+    "line": 4,
+    "raw": "| +== main.py",
+    "tokens": [
+      {
+        "kind": "flow.cont",
+        "start": 0,
+        "end": 1,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 1,
+        "end": 2,
+        "text": " "
+      },
+      {
+        "kind": "flow.open",
+        "start": 2,
+        "end": 3,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 3,
+        "end": 5,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 5,
+        "end": 6,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 6,
+        "end": 13,
+        "text": "main.py"
+      }
+    ]
+  },
+  {
+    "line": 5,
+    "raw": "| :-- pkg/",
+    "tokens": [
+      {
+        "kind": "flow.cont",
+        "start": 0,
+        "end": 1,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 1,
+        "end": 2,
+        "text": " "
+      },
+      {
+        "kind": "flow.close",
+        "start": 2,
+        "end": 3,
+        "text": ":"
+      },
+      {
+        "kind": "operator.dir",
+        "start": 3,
+        "end": 5,
+        "text": "--"
+      },
+      {
+        "kind": "operator.space",
+        "start": 5,
+        "end": 6,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 6,
+        "end": 10,
+        "text": "pkg/"
+      }
+    ]
+  },
+  {
+    "line": 6,
+    "raw": "",
+    "tokens": []
+  }
+]

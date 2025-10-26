@@ -22,6 +22,24 @@ OTHER TOKENS (see [NM.*](rules.md#NM.01), [WN.02](rules.md#WN.02), [CM.*](rules.
 - `"..."`: quoted_name — Allows spaces and special characters in names. Use `\"` to escape quotes inside.
 - `\`: escape — Escape character within quoted names.
 
+### Token scopes (editor highlighting)
+
+The VS Code grammar (`editors/vscode/syntaxes/drrx.tmLanguage.json`) assigns the following scopes so syntax highlighting and diagnostics stay aligned with the normative rules:
+
+- Flow prefix (`punctuation.flow.prefix.drrx`) — covers indentation-aligned `+`, `:`, and `|` markers that implement [FW.*](rules.md#FW.01) and [SP.03](rules.md#SP.03).
+- Directory operator (`keyword.operator.dir.drrx`) — highlights `--` per [DR.01](rules.md#DR.01).
+- File operator (`keyword.operator.file.drrx`) — highlights `==` per [FI.01](rules.md#FI.01).
+- Name tokens:
+  - Quoted names (`string.quoted.double.name.drrx`) — ensures escape handling stays consistent with parser rules ([NM.*](rules.md#NM.01)).
+  - Unquoted names (`entity.name.unquoted.drrx`) — plain identifiers with optional `/` suffix for readability.
+- Spacer lines (`meta.spacer.drrx`) — standalone `|` separators used for [FW.06](rules.md#FW.06) file→directory spacers.
+- Comments (`comment.line.number-sign.drrx`) — inline `# …` ignored by parsing per §1 Source File Structure.
+- Annotation blocks (`meta.annotations.drrx`) with nested scopes:
+  - Keys (`support.type.annotation.key.drrx`) and separators (`punctuation.separator.key-value.drrx`, `punctuation.separator.annotation.drrx`) map to `{ key: value; … }` semantics tied to [AN.*](rules.md#AN.01).
+  - Values highlighted as string (`string.quoted.annotation.value.drrx`) or constant (`constant.other.annotation.value.drrx`).
+- Spacing guard (`invalid.illegal.spacing.drrx`) — flags extra spaces or tabs after operators, enforcing [SP.05](rules.md#SP.05).
+- Whole flow line (`meta.line.drrx`) — groups the prefix/operator/name chain for tooling that needs to style complete structural lines.
+
 Minimal examples:
 
   ```drrx

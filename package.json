@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "validate:ast": "npx ajv -s drrx/ast.schema.json -d drrx/examples/ast-example.json",
-    "validate:diff": "npx ajv -s drrx/list-diff.schema.json -r drrx/annotations.schema.json -d drrx/fixtures/conformance.list-diff.json",
+    "validate:ast": "node scripts/validate-schema.js drrx/ast.schema.json drrx/examples/ast-example.json",
+    "validate:diff": "node scripts/validate-schema.js drrx/list-diff.schema.json drrx/fixtures/conformance.list-diff.json",
     "validate:all": "npm run validate:ast && npm run validate:diff",
     "lint:drrx": "node bin/drrx",
-    "test": "node test/lint-fixtures.js"
+    "test": "node test/lint-fixtures.js && node test/tokenize-fixtures.js",
+    "perf:drrx": "node test/perf/run.js"
   },
   "bin": {
     "drrx": "bin/drrx"

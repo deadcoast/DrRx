@@ -2,6 +2,14 @@
 
 Changes are labelled numerically by their order of integration.
 
+## 0.2.1
+1. Documented TextMate scopes in `drrx/syntax-overview.md` so editor integrations stay aligned with SP/FW/AN rules.
+2. Added tokenizer-based goldens (`lib/drrx-lint.js`, `test/tokenize-fixtures.js`, `test/token-golden/*.json`) to lock syntax highlighting coverage.
+3. Introduced `npm run perf:drrx` (`test/perf/run.js` + README) for large-tree lint throughput tracking.
+4. Refreshed fixture and README docs: catalogued fixtures by rule focus and described VS Code highlighter installation/settings/quick-fixes.
+5. Extended VS Code quick-fixes to re-run linting and wired CI to package/upload the VSIX on `v*` tags.
+6. Replaced external `npx ajv` schema checks with the internal `scripts/validate-schema.js`, updating npm scripts, Makefile, and schema README guidance.
+
 ## 0.2.0
 CHANGELOG.md revision 0.2.8 and started integrating those items toward complete, workable solutions in VS Code only.
 Quote-aware comment stripping (begin)

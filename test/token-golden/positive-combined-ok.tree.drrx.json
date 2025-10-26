@@ -1,0 +1,553 @@
+[
+  {
+    "line": 1,
+    "raw": ".                         # root",
+    "tokens": [
+      {
+        "kind": "root",
+        "start": 0,
+        "end": 1,
+        "text": "."
+      },
+      {
+        "kind": "comment",
+        "start": 26,
+        "end": 32,
+        "text": "# root"
+      }
+    ]
+  },
+  {
+    "line": 2,
+    "raw": " +== root-a.txt",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.open",
+        "start": 1,
+        "end": 2,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 2,
+        "end": 4,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 4,
+        "end": 5,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 5,
+        "end": 15,
+        "text": "root-a.txt"
+      }
+    ]
+  },
+  {
+    "line": 3,
+    "raw": " | :== root-b.txt",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 1,
+        "end": 2,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 2,
+        "end": 3,
+        "text": " "
+      },
+      {
+        "kind": "flow.close",
+        "start": 3,
+        "end": 4,
+        "text": ":"
+      },
+      {
+        "kind": "operator.file",
+        "start": 4,
+        "end": 6,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 6,
+        "end": 7,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 7,
+        "end": 17,
+        "text": "root-b.txt"
+      }
+    ]
+  },
+  {
+    "line": 4,
+    "raw": "|                         # spacer between root files and next directory",
+    "tokens": [
+      {
+        "kind": "flow.cont",
+        "start": 0,
+        "end": 1,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 1,
+        "end": 26,
+        "text": "                         "
+      },
+      {
+        "kind": "comment",
+        "start": 26,
+        "end": 72,
+        "text": "# spacer between root files and next directory"
+      }
+    ]
+  },
+  {
+    "line": 5,
+    "raw": "+ -- src/",
+    "tokens": [
+      {
+        "kind": "flow.open",
+        "start": 0,
+        "end": 1,
+        "text": "+"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 1,
+        "end": 2,
+        "text": " "
+      },
+      {
+        "kind": "operator.dir",
+        "start": 2,
+        "end": 4,
+        "text": "--"
+      },
+      {
+        "kind": "operator.space",
+        "start": 4,
+        "end": 5,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 5,
+        "end": 9,
+        "text": "src/"
+      }
+    ]
+  },
+  {
+    "line": 6,
+    "raw": "  |+== a.py",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 2,
+        "text": "  "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 2,
+        "end": 3,
+        "text": "|"
+      },
+      {
+        "kind": "flow.open",
+        "start": 3,
+        "end": 4,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 4,
+        "end": 6,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 6,
+        "end": 7,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 7,
+        "end": 11,
+        "text": "a.py"
+      }
+    ]
+  },
+  {
+    "line": 7,
+    "raw": "    :== b.py",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 4,
+        "text": "    "
+      },
+      {
+        "kind": "flow.close",
+        "start": 4,
+        "end": 5,
+        "text": ":"
+      },
+      {
+        "kind": "operator.file",
+        "start": 5,
+        "end": 7,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 7,
+        "end": 8,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 8,
+        "end": 12,
+        "text": "b.py"
+      }
+    ]
+  },
+  {
+    "line": 8,
+    "raw": "  |                       # spacer before subdirs",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 2,
+        "text": "  "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 2,
+        "end": 3,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 3,
+        "end": 26,
+        "text": "                       "
+      },
+      {
+        "kind": "comment",
+        "start": 26,
+        "end": 49,
+        "text": "# spacer before subdirs"
+      }
+    ]
+  },
+  {
+    "line": 9,
+    "raw": "  | +-- lib/",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 2,
+        "text": "  "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 2,
+        "end": 3,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 3,
+        "end": 4,
+        "text": " "
+      },
+      {
+        "kind": "flow.open",
+        "start": 4,
+        "end": 5,
+        "text": "+"
+      },
+      {
+        "kind": "operator.dir",
+        "start": 5,
+        "end": 7,
+        "text": "--"
+      },
+      {
+        "kind": "operator.space",
+        "start": 7,
+        "end": 8,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 8,
+        "end": 12,
+        "text": "lib/"
+      }
+    ]
+  },
+  {
+    "line": 10,
+    "raw": "  | |+== util.py",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 2,
+        "text": "  "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 2,
+        "end": 3,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 3,
+        "end": 4,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 4,
+        "end": 5,
+        "text": "|"
+      },
+      {
+        "kind": "flow.open",
+        "start": 5,
+        "end": 6,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 6,
+        "end": 8,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 8,
+        "end": 9,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 9,
+        "end": 16,
+        "text": "util.py"
+      }
+    ]
+  },
+  {
+    "line": 11,
+    "raw": "  |   :== core.py",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 2,
+        "text": "  "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 2,
+        "end": 3,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 3,
+        "end": 6,
+        "text": "   "
+      },
+      {
+        "kind": "flow.close",
+        "start": 6,
+        "end": 7,
+        "text": ":"
+      },
+      {
+        "kind": "operator.file",
+        "start": 7,
+        "end": 9,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 9,
+        "end": 10,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 10,
+        "end": 17,
+        "text": "core.py"
+      }
+    ]
+  },
+  {
+    "line": 12,
+    "raw": "  | :-- tests/",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 2,
+        "text": "  "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 2,
+        "end": 3,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 3,
+        "end": 4,
+        "text": " "
+      },
+      {
+        "kind": "flow.close",
+        "start": 4,
+        "end": 5,
+        "text": ":"
+      },
+      {
+        "kind": "operator.dir",
+        "start": 5,
+        "end": 7,
+        "text": "--"
+      },
+      {
+        "kind": "operator.space",
+        "start": 7,
+        "end": 8,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 8,
+        "end": 14,
+        "text": "tests/"
+      }
+    ]
+  },
+  {
+    "line": 13,
+    "raw": "      |+== test_a.py",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 6,
+        "text": "      "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 6,
+        "end": 7,
+        "text": "|"
+      },
+      {
+        "kind": "flow.open",
+        "start": 7,
+        "end": 8,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 8,
+        "end": 10,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 10,
+        "end": 11,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 11,
+        "end": 20,
+        "text": "test_a.py"
+      }
+    ]
+  },
+  {
+    "line": 14,
+    "raw": "      :== test_b.py",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 6,
+        "text": "      "
+      },
+      {
+        "kind": "flow.close",
+        "start": 6,
+        "end": 7,
+        "text": ":"
+      },
+      {
+        "kind": "operator.file",
+        "start": 7,
+        "end": 9,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 9,
+        "end": 10,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 10,
+        "end": 19,
+        "text": "test_b.py"
+      }
+    ]
+  },
+  {
+    "line": 15,
+    "raw": "",
+    "tokens": []
+  }
+]

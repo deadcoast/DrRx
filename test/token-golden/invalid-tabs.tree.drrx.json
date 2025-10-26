@@ -1,0 +1,31 @@
+[
+  {
+    "line": 1,
+    "raw": "\t.                        # EXPECTED ERROR: SP.01 tabs disallowed; root also must be column 1 (SP.06)",
+    "tokens": [
+      {
+        "kind": "invalid.tab",
+        "start": 0,
+        "end": 1,
+        "text": "\t"
+      },
+      {
+        "kind": "root",
+        "start": 1,
+        "end": 2,
+        "text": "."
+      },
+      {
+        "kind": "comment",
+        "start": 26,
+        "end": 101,
+        "text": "# EXPECTED ERROR: SP.01 tabs disallowed; root also must be column 1 (SP.06)"
+      }
+    ]
+  },
+  {
+    "line": 2,
+    "raw": "",
+    "tokens": []
+  }
+]

@@ -1,10 +1,13 @@
 # COMPLETE DIRECTORY TREE - WINDOWS FORMAT
 
+> Windows Terminal Command: `cmd /c "tree /F /A"`                                                                                                                  pwsh  15:22:49 
+
 ```
 .
 |   .markdownlint.json
 |   AGENTS.md
 |   CHANGELOG.md
+|   DIRECTORYTREE.md
 |   Makefile
 |   package-lock.json
 |   package.json
@@ -14,111 +17,14 @@
 |   skratchpad.json
 |   TODO.json
 |
-+---.archived-format
-|   \---docs
-|       |   00-index.md
-|       |
-|       +---01-concepts
-|       |       mental-model.md
-|       |       udl-overview.md
-|       |       what-is-drrx.md
-|       |
-|       +---02-quickstart
-|       |       dry-run-and-rollback.md
-|       |       first-inject.md
-|       |       install-windows.md
-|       |
-|       +---03-udl-spec
-|       |       udl-alignment-and-flow.md
-|       |       udl-dictionary.md
-|       |       udl-examples.md
-|       |       udl-grammar-ebnf.md
-|       |       udl-linting-guide.md
-|       |       udl-spacing-rules.md
-|       |
-|       +---04-cli
-|       |       cli-overview.md
-|       |       cmd-adddir-addfile.md
-|       |       cmd-del-deldir-delall.md
-|       |       cmd-inject.md
-|       |       cmd-list-ls.md
-|       |       cmd-log-audit-clear.md
-|       |       cmd-quicksave.md
-|       |       cmd-restore.md
-|       |       exit-codes.md
-|       |       global-flags.md
-|       |
-|       +---05-workflows
-|       |       auditing-and-change-review.md
-|       |       backups-and-quicksave.md
-|       |       migration-existing-tree.md
-|       |       reconcile-target-dir.md
-|       |
-|       +---06-recipes
-|       |       mixed-code-and-docs.md
-|       |       monorepo-slices.md
-|       |       python-project-skeleton.md
-|       |       template-repo-bootstrap.md
-|       |
-|       +---07-windows-deep-dive
-|       |       junctions-symlinks.md
-|       |       long-paths-support.md
-|       |       paths-crlf-case.md
-|       |       permissions-acls.md
-|       |
-|       +---08-reference
-|       |       ast-json-schema.md
-|       |       drrx-conf-schema.md
-|       |       error-catalog.md
-|       |       logging-format.md
-|       |
-|       +---09-test-and-quality
-|       |       conformance-suite.md
-|       |       coverage-strategy.md
-|       |       fixtures-and-golden-tests.md
-|       |       perf-baselines.md
-|       |
-|       +---10-project
-|       |       architecture.md
-|       |       code-of-conduct.md
-|       |       contributing.md
-|       |       decision-records.md
-|       |       roadmap.md
-|       |       security-model.md
-|       |       style-guide.md
-|       |       threat-checklist.md
-|       |       versioning-and-changelog.md
-|       |
-|       \---mockup-directory
-|           |   pyproject.toml
-|           |
-|           \---src
-|               |   mockup-directory.drrx
-|               |
-|               +---python
-|               |   |   main.py
-|               |   |
-|               |   +---commands
-|               |   |       drrx-dict.json
-|               |   |
-|               |   \---modules
-|               |           cli_example.py
-|               |           commands.py
-|               |
-|               \---udl
-|                   +---directory
-|                   |       DirectoryExampleOne.drrx
-|                   |       DirectoryExampleTwo.drrx
-|                   |
-|                   \---file
-|                           exampleFile.drrx
-|                           exampleFileTwo.drrx
-|
 +---.github
 |   \---workflows
 |           ci.yml
 |
-+---Architecture
++---bin
+|       drrx
+|
++---docs
 |   +---CHANGELOGS
 |   |   +---0.0.0
 |   |   |       CHANGELOG.md
@@ -128,7 +34,7 @@
 |   |   |
 |   |   +---0.2.0
 |   |   |       CHANGELOG.md
-|   |   |       
+|   |   |
 |   |   +---0.3.0
 |   |   |       CHANGELOG.md
 |   |   |
@@ -136,30 +42,38 @@
 |   |   \---monolith
 |   |           CHANGELOG.md
 |   |
-|   \---REVISIONLOG
-|       +---0.0.0
-|       |       REVISIONLOG.md
-|       |
-|       +---0.1.0
-|       |       REVISIONLOG.md
-|       |
-|       +---0.2.0
-|       |       REVISIONLOG.md
-|       |
-|       +---0.3.0
-|       |       REVISIONLOG.md
-|       |
-|       \---MONOLITH
-|               REVISIONLOG.md
-|
-+---bin
-|       drrx
-|
-+---dev_plan
-|       phase_1.md
-|       phase_2.md
-|       phase_3.md
-|       phase_4.md
+|   +---DEVPLAN
+|   |       phase_1.md
+|   |       phase_2.md
+|   |       phase_3.md
+|   |       phase_4.md
+|   |
+|   +---REVISIONLOG
+|   |   +---0.0.0
+|   |   |       REVISIONLOG.md
+|   |   |
+|   |   +---0.1.0
+|   |   |       REVISIONLOG.md
+|   |   |
+|   |   +---0.2.0
+|   |   |       REVISIONLOG.md
+|   |   |
+|   |   +---0.3.0
+|   |   |       REVISIONLOG.md
+|   |   |
+|   |   \---MONOLITH
+|   |           REVISIONLOG.md
+|   |
+|   \---TODO
+|       \---0.0.0
+|           +---0.0.1
+|           |       TODO.md
+|           |
+|           +---0.0.2
+|           |       TODO.md
+|           |
+|           \---0.0.3
+|                   TODO.md
 |
 +---drrx
 |   |   annotations.schema.json
@@ -222,33 +136,22 @@
 |       drrx-lint.js
 |
 +---src
-+---test
-|   |   lint-fixtures.js
-|   |
-|   \---golden
-|           conformance-edge-cases.tree.drrx.json
-|           invalid-file-has-child.tree.drrx.json
-|           invalid-fw02-missing-continuity.tree.drrx.json
-|           invalid-grouping.tree.drrx.json
-|           invalid-marker-after-name.tree.drrx.json
-|           invalid-missing-spacer.tree.drrx.json
-|           invalid-multi-branch.tree.drrx.json
-|           invalid-orphan-spacers.tree.drrx.json
-|           invalid-root-files-block.tree.drrx.json
-|           invalid-root-files-order.tree.drrx.json
-|           invalid-root-flow.tree.drrx.json
-|           invalid-root-indented.tree.drrx.json
-|           invalid-sp03-missing-first-child.tree.drrx.json
-|           invalid-tabs.tree.drrx.json
-|
-\---TODO
-    \---0.0.0
-        +---0.0.1
-        |       TODO.md
-        |
-        +---0.0.2
-        |       TODO.md
-        |
-        \---0.0.3
-                TODO.md 
+\---test
+    |   lint-fixtures.js
+    |
+    \---golden
+            conformance-edge-cases.tree.drrx.json
+            invalid-file-has-child.tree.drrx.json
+            invalid-fw02-missing-continuity.tree.drrx.json
+            invalid-grouping.tree.drrx.json
+            invalid-marker-after-name.tree.drrx.json
+            invalid-missing-spacer.tree.drrx.json
+            invalid-multi-branch.tree.drrx.json
+            invalid-orphan-spacers.tree.drrx.json
+            invalid-root-files-block.tree.drrx.json
+            invalid-root-files-order.tree.drrx.json
+            invalid-root-flow.tree.drrx.json
+            invalid-root-indented.tree.drrx.json
+            invalid-sp03-missing-first-child.tree.drrx.json
+            invalid-tabs.tree.drrx.json
 ```

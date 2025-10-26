@@ -6,6 +6,13 @@ const { lintText } = require('../../lib/drrx-lint');
 class DrrxCodeActionProvider {
   provideCodeActions(document, range, context) {
     const fixes = [];
+    const attachRelint = (action) => {
+      action.command = {
+        command: 'drrx.relintDocument',
+        title: 'Re-run Dr.Rx lint',
+        arguments: [document.uri]
+      };
+    };
     for (const d of context.diagnostics) {
       if (typeof d.code === 'object') {
         // unwrap {value, target}
@@ -20,6 +27,7 @@ class DrrxCodeActionProvider {
         const action = new vscode.CodeAction('Insert spacer | (FW.06)', vscode.CodeActionKind.QuickFix);
         action.edit = edit;
         action.diagnostics = [d];
+        attachRelint(action);
         fixes.push(action);
       } else if (code === 'SP.05') {
         // normalize to single space after operator by collapsing spaces in diagnostic range
@@ -30,6 +38,7 @@ class DrrxCodeActionProvider {
         const action = new vscode.CodeAction('Fix operator spacing (SP.05)', vscode.CodeActionKind.QuickFix);
         action.edit = edit;
         action.diagnostics = [d];
+        attachRelint(action);
         fixes.push(action);
       } else if (code === 'VL.07') {
         // remove one of consecutive spacers
@@ -38,6 +47,7 @@ class DrrxCodeActionProvider {
         const action = new vscode.CodeAction('Remove extra spacer line (VL.07)', vscode.CodeActionKind.QuickFix);
         action.edit = edit;
         action.diagnostics = [d];
+        attachRelint(action);
         fixes.push(action);
       } else if (code === 'SP.03' || code === 'FW.02') {
         // Insert continuity '|' in prefix. For SP.03, align under parent's content column; for FW.02, align sensibly.
@@ -88,6 +98,7 @@ class DrrxCodeActionProvider {
           const action = new vscode.CodeAction(title, vscode.CodeActionKind.QuickFix);
           action.edit = edit;
           action.diagnostics = [d];
+          attachRelint(action);
           fixes.push(action);
         }
       } else if (code === 'OR.02') {
@@ -202,6 +213,7 @@ class DrrxCodeActionProvider {
         const action = new vscode.CodeAction('Regroup files above dirs (comprehensive) (OR.02)', vscode.CodeActionKind.QuickFix);
         action.edit = edit;
         action.diagnostics = [d];
+        attachRelint(action);
         fixes.push(action);
       }
     }
@@ -232,6 +244,21 @@ function activate(context) {
     vscode.window.showInformationMessage('Dr.Rx lint: diagnostics updated.');
   });
   context.subscriptions.push(lintCmd);
+
+  const relintCmd = vscode.commands.registerCommand('drrx.relintDocument', async (uri) => {
+    try {
+      if (uri) {
+        const doc = await vscode.workspace.openTextDocument(uri);
+        runLint(doc);
+        return;
+      }
+      const active = vscode.window.activeTextEditor?.document;
+      if (active) runLint(active);
+    } catch (err) {
+      console.error('Dr.Rx relint command failed', err);
+    }
+  });
+  context.subscriptions.push(relintCmd);
 
   // initial
   if (vscode.window.activeTextEditor) runLint(vscode.window.activeTextEditor.document);

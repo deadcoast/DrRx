@@ -1,0 +1,684 @@
+[
+  {
+    "line": 1,
+    "raw": ".                                   # root",
+    "tokens": [
+      {
+        "kind": "root",
+        "start": 0,
+        "end": 1,
+        "text": "."
+      },
+      {
+        "kind": "comment",
+        "start": 36,
+        "end": 42,
+        "text": "# root"
+      }
+    ]
+  },
+  {
+    "line": 2,
+    "raw": " +== \"Read Me.txt\" { tag: \"docs\" }",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.open",
+        "start": 1,
+        "end": 2,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 2,
+        "end": 4,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 4,
+        "end": 5,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 5,
+        "end": 18,
+        "text": "\"Read Me.txt\""
+      },
+      {
+        "kind": "name.gap",
+        "start": 18,
+        "end": 19,
+        "text": " "
+      },
+      {
+        "kind": "annotation.block",
+        "start": 19,
+        "end": 34,
+        "text": "{ tag: \"docs\" }"
+      }
+    ]
+  },
+  {
+    "line": 3,
+    "raw": " | :== \"LICENSE\" { tag: \"legal\" }",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 1,
+        "end": 2,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 2,
+        "end": 3,
+        "text": " "
+      },
+      {
+        "kind": "flow.close",
+        "start": 3,
+        "end": 4,
+        "text": ":"
+      },
+      {
+        "kind": "operator.file",
+        "start": 4,
+        "end": 6,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 6,
+        "end": 7,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 7,
+        "end": 16,
+        "text": "\"LICENSE\""
+      },
+      {
+        "kind": "name.gap",
+        "start": 16,
+        "end": 17,
+        "text": " "
+      },
+      {
+        "kind": "annotation.block",
+        "start": 17,
+        "end": 33,
+        "text": "{ tag: \"legal\" }"
+      }
+    ]
+  },
+  {
+    "line": 4,
+    "raw": "|                                    # spacer to next root directory",
+    "tokens": [
+      {
+        "kind": "flow.cont",
+        "start": 0,
+        "end": 1,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 1,
+        "end": 37,
+        "text": "                                    "
+      },
+      {
+        "kind": "comment",
+        "start": 37,
+        "end": 68,
+        "text": "# spacer to next root directory"
+      }
+    ]
+  },
+  {
+    "line": 5,
+    "raw": " +-- \"Project Files\"/ { owner: \"team\" }",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.open",
+        "start": 1,
+        "end": 2,
+        "text": "+"
+      },
+      {
+        "kind": "operator.dir",
+        "start": 2,
+        "end": 4,
+        "text": "--"
+      },
+      {
+        "kind": "operator.space",
+        "start": 4,
+        "end": 5,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 5,
+        "end": 20,
+        "text": "\"Project Files\""
+      },
+      {
+        "kind": "unknown",
+        "start": 20,
+        "end": 39,
+        "text": "/ { owner: \"team\" }"
+      }
+    ]
+  },
+  {
+    "line": 6,
+    "raw": " | |+== \"Spec.md\" { status: \"final\" }",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 1,
+        "end": 2,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 2,
+        "end": 3,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 3,
+        "end": 4,
+        "text": "|"
+      },
+      {
+        "kind": "flow.open",
+        "start": 4,
+        "end": 5,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 5,
+        "end": 7,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 7,
+        "end": 8,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 8,
+        "end": 17,
+        "text": "\"Spec.md\""
+      },
+      {
+        "kind": "name.gap",
+        "start": 17,
+        "end": 18,
+        "text": " "
+      },
+      {
+        "kind": "annotation.block",
+        "start": 18,
+        "end": 37,
+        "text": "{ status: \"final\" }"
+      }
+    ]
+  },
+  {
+    "line": 7,
+    "raw": " |   :== \"Plan.md\" { status: \"draft\" }",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 1,
+        "end": 2,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 2,
+        "end": 5,
+        "text": "   "
+      },
+      {
+        "kind": "flow.close",
+        "start": 5,
+        "end": 6,
+        "text": ":"
+      },
+      {
+        "kind": "operator.file",
+        "start": 6,
+        "end": 8,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 8,
+        "end": 9,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 9,
+        "end": 18,
+        "text": "\"Plan.md\""
+      },
+      {
+        "kind": "name.gap",
+        "start": 18,
+        "end": 19,
+        "text": " "
+      },
+      {
+        "kind": "annotation.block",
+        "start": 19,
+        "end": 38,
+        "text": "{ status: \"draft\" }"
+      }
+    ]
+  },
+  {
+    "line": 8,
+    "raw": " | |                                  # spacer before subdirectories",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 1,
+        "end": 2,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 2,
+        "end": 3,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 3,
+        "end": 4,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 4,
+        "end": 38,
+        "text": "                                  "
+      },
+      {
+        "kind": "comment",
+        "start": 38,
+        "end": 68,
+        "text": "# spacer before subdirectories"
+      }
+    ]
+  },
+  {
+    "line": 9,
+    "raw": " | +-- assets/ { cdn: \"true\" }",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 1,
+        "end": 2,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 2,
+        "end": 3,
+        "text": " "
+      },
+      {
+        "kind": "flow.open",
+        "start": 3,
+        "end": 4,
+        "text": "+"
+      },
+      {
+        "kind": "operator.dir",
+        "start": 4,
+        "end": 6,
+        "text": "--"
+      },
+      {
+        "kind": "operator.space",
+        "start": 6,
+        "end": 7,
+        "text": " "
+      },
+      {
+        "kind": "name.unquoted",
+        "start": 7,
+        "end": 14,
+        "text": "assets/"
+      },
+      {
+        "kind": "name.gap",
+        "start": 14,
+        "end": 15,
+        "text": " "
+      },
+      {
+        "kind": "annotation.block",
+        "start": 15,
+        "end": 30,
+        "text": "{ cdn: \"true\" }"
+      }
+    ]
+  },
+  {
+    "line": 10,
+    "raw": " | |+== \"logo.png\"",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 1,
+        "end": 2,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 2,
+        "end": 3,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 3,
+        "end": 4,
+        "text": "|"
+      },
+      {
+        "kind": "flow.open",
+        "start": 4,
+        "end": 5,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 5,
+        "end": 7,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 7,
+        "end": 8,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 8,
+        "end": 18,
+        "text": "\"logo.png\""
+      }
+    ]
+  },
+  {
+    "line": 11,
+    "raw": " |   :== \"icon.svg\"",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 1,
+        "end": 2,
+        "text": "|"
+      },
+      {
+        "kind": "prefix.gap",
+        "start": 2,
+        "end": 5,
+        "text": "   "
+      },
+      {
+        "kind": "flow.close",
+        "start": 5,
+        "end": 6,
+        "text": ":"
+      },
+      {
+        "kind": "operator.file",
+        "start": 6,
+        "end": 8,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 8,
+        "end": 9,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 9,
+        "end": 19,
+        "text": "\"icon.svg\""
+      }
+    ]
+  },
+  {
+    "line": 12,
+    "raw": " |",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 1,
+        "end": 2,
+        "text": "|"
+      }
+    ]
+  },
+  {
+    "line": 13,
+    "raw": " :-- \"docs\"/ { publish: \"yes\" }",
+    "tokens": [
+      {
+        "kind": "indent.misalign",
+        "start": 0,
+        "end": 1,
+        "text": " "
+      },
+      {
+        "kind": "flow.close",
+        "start": 1,
+        "end": 2,
+        "text": ":"
+      },
+      {
+        "kind": "operator.dir",
+        "start": 2,
+        "end": 4,
+        "text": "--"
+      },
+      {
+        "kind": "operator.space",
+        "start": 4,
+        "end": 5,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 5,
+        "end": 11,
+        "text": "\"docs\""
+      },
+      {
+        "kind": "unknown",
+        "start": 11,
+        "end": 31,
+        "text": "/ { publish: \"yes\" }"
+      }
+    ]
+  },
+  {
+    "line": 14,
+    "raw": "   |+== \"intro.md\"",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 2,
+        "text": "  "
+      },
+      {
+        "kind": "indent.misalign",
+        "start": 2,
+        "end": 3,
+        "text": " "
+      },
+      {
+        "kind": "flow.cont",
+        "start": 3,
+        "end": 4,
+        "text": "|"
+      },
+      {
+        "kind": "flow.open",
+        "start": 4,
+        "end": 5,
+        "text": "+"
+      },
+      {
+        "kind": "operator.file",
+        "start": 5,
+        "end": 7,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 7,
+        "end": 8,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 8,
+        "end": 18,
+        "text": "\"intro.md\""
+      }
+    ]
+  },
+  {
+    "line": 15,
+    "raw": "     :== \"api.md\"",
+    "tokens": [
+      {
+        "kind": "indent",
+        "start": 0,
+        "end": 4,
+        "text": "    "
+      },
+      {
+        "kind": "indent.misalign",
+        "start": 4,
+        "end": 5,
+        "text": " "
+      },
+      {
+        "kind": "flow.close",
+        "start": 5,
+        "end": 6,
+        "text": ":"
+      },
+      {
+        "kind": "operator.file",
+        "start": 6,
+        "end": 8,
+        "text": "=="
+      },
+      {
+        "kind": "operator.space",
+        "start": 8,
+        "end": 9,
+        "text": " "
+      },
+      {
+        "kind": "name.quoted",
+        "start": 9,
+        "end": 17,
+        "text": "\"api.md\""
+      }
+    ]
+  },
+  {
+    "line": 16,
+    "raw": "",
+    "tokens": []
+  },
+  {
+    "line": 17,
+    "raw": "",
+    "tokens": []
+  }
+]

@@ -82,14 +82,28 @@ This example demonstrates:
 
 See `drrx/drrx.yaml` for full command and option semantics.
 
+## Highlighter Support (VS Code)
+
+- Packaging: `cd editors/vscode && npm install && npx vsce package` produces `drrx-*.vsix`; install with `code --install-extension path/to/drrx-*.vsix`.
+- Settings:
+  - `drrx.strict` &mdash; `off`, `warn`, or `error` (default) to tune diagnostic strictness.
+  - `drrx.severityOverrides` &mdash; per-rule overrides, e.g. `{ "SP.02": "warn", "FW.06": "error" }`.
+- Current quick-fixes:
+  - `FW.06` &mdash; insert the required spacer `|` line between files and directories.
+  - `SP.05` &mdash; normalize spacing after `--` / `==`.
+  - `VL.07` &mdash; remove consecutive spacer lines.
+  - `SP.03` / `FW.02` &mdash; add the missing continuity bar under an open vein.
+  - `OR.02` &mdash; regroup files before directories and insert a single spacer.
+- Token scopes mirror the grammar in `drrx/syntax-overview.md#token-scopes-editor-highlighting` and power the syntax theme in `editors/vscode/syntaxes/drrx.tmLanguage.json`.
+
 ## Validate Artifacts
 
 - AST example validation (Node):
-  - `npx ajv -s drrx/ast.schema.json -d drrx/examples/ast-example.json`
+  - `npm run validate:ast` *(or `node scripts/validate-schema.js drrx/ast.schema.json drrx/examples/ast-example.json`)*
 - AST example validation (Python):
   - `python -m jsonschema -i drrx/examples/ast-example.json drrx/ast.schema.json`
 - List --diff JSON validation:
-  - `npx ajv -s drrx/list-diff.schema.json -r drrx/annotations.schema.json -d path/to/list-diff.json`
+  - `npm run validate:diff` *(or `node scripts/validate-schema.js drrx/list-diff.schema.json drrx/fixtures/conformance.list-diff.json`)*
 
 ## Learn More
 

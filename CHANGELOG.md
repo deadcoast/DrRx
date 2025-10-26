@@ -2,6 +2,20 @@
 
 Changes are labelled numerically by their order of integration.
 
+## 0.2.1
+1. Token scope documentation (syntax-overview)
+   - Added a `Token scopes` subsection in `drrx/syntax-overview.md` so editors map grammar tokens to the authoritative rule IDs (SP.*, FW.*, AN.*).
+2. Tokenization harness & goldens
+   - Introduced `tokenizeText` in `lib/drrx-lint.js` plus `test/tokenize-fixtures.js` and `test/token-golden/*.json` to lock down TextMate scopes alongside diagnostics.
+3. Performance harness
+   - Added `npm run perf:drrx` (`test/perf/run.js`) and documented the current 50k‑line baseline in `test/perf/README.md`.
+4. Fixture + README refresh
+   - Updated `drrx/fixtures/README.md` to catalogue invalid/positive samples with their rule coverage and added a “Highlighter Support” section to `README.md`.
+5. VS Code improvements
+   - Code actions now re-run linting after edits (`drrx.relintDocument`), and CI packages the VSIX on `v*` tags with release assets.
+6. Schema validation workflow
+   - Replaced external `npx ajv` calls with an in-repo validator (`scripts/validate-schema.js`), updating npm scripts, Makefile targets, and schema docs.
+
 ## 0.2.0
 CHANGELOG.md revision 0.2.8 and started integrating those items toward complete, workable solutions in VS Code only.
 Quote-aware comment stripping (begin)

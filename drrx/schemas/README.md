@@ -9,14 +9,12 @@ This folder collects JSON Schemas and examples to validate artifacts produced or
 
 ## Validate Locally
 
-Using Node.js (AJV CLI):
+Using Node.js (built-in Dr.Rx validator):
 
-- Install once (local project install):
-  - `npm install --save-dev ajv-cli`
 - Validate the AST example:
-  - `npx ajv -s drrx/ast.schema.json -d drrx/examples/ast-example.json`
-- Validate a list --diff JSON (include referenced schema for annotations):
-  - `npx ajv -s drrx/list-diff.schema.json -r drrx/annotations.schema.json -d path/to/list-diff.json`
+  - `npm run validate:ast` *(or `node scripts/validate-schema.js drrx/ast.schema.json drrx/examples/ast-example.json`)*
+- Validate a list --diff JSON (includes annotation refs automatically):
+  - `npm run validate:diff` *(or `node scripts/validate-schema.js drrx/list-diff.schema.json drrx/fixtures/conformance.list-diff.json`)*
 
 Using Python (jsonschema):
 
@@ -25,7 +23,7 @@ Using Python (jsonschema):
 - Validate the AST example:
   - `python -m jsonschema -i drrx/examples/ast-example.json drrx/ast.schema.json`
 
-Note: For `list-diff.schema.json`, if your validator does not auto-resolve `$ref` to `drrx/annotations.schema.json`, supply it explicitly (AJV `-r` flag as shown above), or pre-bundle schemas.
+Note: For `list-diff.schema.json`, if your validator does not auto-resolve `$ref` to `drrx/annotations.schema.json`, supply it explicitly or pre-bundle schemas (the bundled Node script handles this automatically).
 
 ## Sample list --diff JSON
 

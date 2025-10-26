@@ -2,6 +2,21 @@
 
 Changes are labelled numerically by their order of integration.
 
+## 0.2.1
+
+1. Token scope documentation (syntax-overview)
+   - Added `Token scopes (editor highlighting)` to `drrx/syntax-overview.md`, mapping each TextMate scope to the corresponding rule IDs (SP.*, FW.*, AN.*).
+2. Tokenization harness & goldens
+   - Added `tokenizeText` plus `test/tokenize-fixtures.js` and `test/token-golden/*.json` to assert scope stability for representative fixtures.
+3. Performance harness
+   - Introduced `test/perf/run.js` and documented the baseline throughput in `test/perf/README.md`; exposed via `npm run perf:drrx`.
+4. Fixture + README refresh
+   - `drrx/fixtures/README.md` now lists invalid/positive fixtures with rule coverage, and `README.md` documents VS Code highlighter support and quick-fixes.
+5. VS Code improvements
+   - Quick-fix actions trigger a `drrx.relintDocument` command for immediate feedback; CI packages the VSIX on tag pushes (`.github/workflows/ci.yml`).
+6. Schema validation workflow
+   - Replaced `npx ajv` commands with `scripts/validate-schema.js`, updating npm scripts, Makefile targets, and schema README instructions.
+
 ## 0.2.0
 
 Thanks for the direction. I read CHANGELOG.md revision 0.2.8 and started integrating those items toward complete, workable solutions in VS Code only.
