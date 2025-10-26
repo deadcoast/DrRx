@@ -14,6 +14,7 @@ Changes are labelled numerically by their order of integration.
    - `drrx/fixtures/README.md` now lists invalid/positive fixtures with rule coverage, and `README.md` documents VS Code highlighter support and quick-fixes.
 5. VS Code improvements
    - Quick-fix actions trigger a `drrx.relintDocument` command for immediate feedback; CI packages the VSIX on tag pushes (`.github/workflows/ci.yml`).
+   - Added a VL.02 quick fix to remove stray continuity bars when no sibling remains at the depth.
 6. Schema validation workflow
    - Replaced `npx ajv` commands with `scripts/validate-schema.js`, updating npm scripts, Makefile targets, and schema README instructions.
 

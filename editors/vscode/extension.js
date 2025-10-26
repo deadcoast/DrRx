@@ -49,6 +49,22 @@ class DrrxCodeActionProvider {
         action.diagnostics = [d];
         attachRelint(action);
         fixes.push(action);
+      } else if ((code === 'VL.02' || code === 'FW.11') && typeof d.message === 'string' && d.message.includes('present')) {
+        // Continuity bar present without sibling: remove the stray '|'
+        const line = d.range.start.line;
+        const text = document.lineAt(line).text;
+        const pipeIdx = text.indexOf('|');
+        if (pipeIdx !== -1) {
+          let endIdx = pipeIdx + 1;
+          if (text[endIdx] === ' ') endIdx += 1;
+          const edit = new vscode.WorkspaceEdit();
+          edit.delete(document.uri, new vscode.Range(line, pipeIdx, line, endIdx));
+          const action = new vscode.CodeAction('Remove stray continuity | (VL.02)', vscode.CodeActionKind.QuickFix);
+          action.edit = edit;
+          action.diagnostics = [d];
+          attachRelint(action);
+          fixes.push(action);
+        }
       } else if (code === 'SP.03' || code === 'FW.02') {
         // Insert continuity '|' in prefix. For SP.03, align under parent's content column; for FW.02, align sensibly.
         const line = d.range.start.line;

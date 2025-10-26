@@ -13,6 +13,7 @@ Changes are labelled numerically by their order of integration.
    - Updated `drrx/fixtures/README.md` to catalogue invalid/positive samples with their rule coverage and added a “Highlighter Support” section to `README.md`.
 5. VS Code improvements
    - Code actions now re-run linting after edits (`drrx.relintDocument`), and CI packages the VSIX on `v*` tags with release assets.
+   - Added a VL.02 quick fix to remove stray continuity bars when no sibling follows.
 6. Schema validation workflow
    - Replaced external `npx ajv` calls with an in-repo validator (`scripts/validate-schema.js`), updating npm scripts, Makefile targets, and schema docs.
 

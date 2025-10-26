@@ -25,12 +25,11 @@ Seed list --diff JSON fixture
 
 drrx/fixtures/conformance.list-diff.json
 Matches drrx/list-diff.schema.json and exercises create/change/delete cases
-TODO: Syntax Highlighting scope plan
+TODO: Syntax Highlighting scope plan (VS Code focus)
 
 TODO.md
 Complete tasklist for:
 Token scopes, tmLanguage (VS Code), diagnostics engine mapping rules to IDs
-Notepad++ UDL definition
 Fixtures/golden tests, performance baselines
 Quick-fixes (insert spacer, regroup files/dirs, adjust continuity bars)
 CI integration, documentation sync
@@ -101,7 +100,7 @@ validate-all: runs both
 TODO scope for Syntax Highlighting (complete plan)
 
 TODO.md now includes a full, structured scope:
-Token and scope mapping, TextMate grammar work, diagnostics engine (rule-to-diagnostic mappings), quick-fixes, Notepad++ UDL, optional Sublime/JetBrains support, fixtures/golden tests, perf baselines, CI gating, doc sync.
+Token and scope mapping, TextMate grammar work, diagnostics engine (rule-to-diagnostic mappings), quick-fixes, fixtures/golden tests, perf baselines, CI gating, doc sync.
 Acceptance milestones M1–M4.
 Specific quick-fixes to implement (insert spacer FW.06, regroup OR.02, fix operator spacing SP.05, etc.).
 Rules and docs alignment (operational changes)
@@ -205,7 +204,7 @@ npm run validate:all
 Syntax Highlighter scope (started)
 
 TODO.md now contains a complete plan:
-Token scopes, tmLanguage, diagnostics engine mapping rule IDs (errors vs warnings), quick-fixes (insert spacer FW.06, regroup OR.02, fix spacing SP.05, etc.), Notepad++ UDL, optional Sublime/JetBrains, fixtures/golden tests, perf gate, CI gating, docs sync.
+Token scopes, tmLanguage, diagnostics engine mapping rule IDs (errors vs warnings), quick-fixes (insert spacer FW.06, regroup OR.02, fix spacing SP.05, etc.), fixtures/golden tests, perf gate, CI gating, docs sync (VS Code focus only).
 Notes
 
 I kept the VS Code extension minimal to avoid churn; it’s ready to be extended with a diagnostics engine. The command drrx.lint is registered but currently a placeholder.

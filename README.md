@@ -92,6 +92,7 @@ See `drrx/drrx.yaml` for full command and option semantics.
   - `FW.06` &mdash; insert the required spacer `|` line between files and directories.
   - `SP.05` &mdash; normalize spacing after `--` / `==`.
   - `VL.07` &mdash; remove consecutive spacer lines.
+  - `VL.02` &mdash; remove stray continuity bars when no sibling remains at the depth.
   - `SP.03` / `FW.02` &mdash; add the missing continuity bar under an open vein.
   - `OR.02` &mdash; regroup files before directories and insert a single spacer.
 - Token scopes mirror the grammar in `drrx/syntax-overview.md#token-scopes-editor-highlighting` and power the syntax theme in `editors/vscode/syntaxes/drrx.tmLanguage.json`.
